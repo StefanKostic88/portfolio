@@ -15,9 +15,6 @@ const SectionStyled = styled.div`
   // min-height: calc(95vh - 4.8rem);
   min-height: 100vh;
   color: ${({ theme }) => theme.textLight};
-  svg {
-    fill: red;
-  }
 `;
 
 const FormSectionStyled = styled.div`
@@ -31,33 +28,40 @@ const FormSectionStyled = styled.div`
   min-width: 70%;
   background-color: black;
   border: ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `;
 
 const ContactFormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
 
   input {
     font-size: 1.6rem;
     padding: 0.8rem;
-    border: 1px solid rgb(72, 219, 251);
+    border: ${({ theme }) => theme.border};
     margin-bottom: 1.6rem;
     background-color: black;
-    color: rgb(72, 219, 251);
+    color: ${({ theme }) => theme.color.primary};
+    border-radius: ${({ theme }) => theme.borderRadius};
+    &:focus {
+      box-shadow: ${({ theme }) => theme.boxShadow};
+      outline: none;
+    }
   }
   textarea {
     font-size: 1.6rem;
     padding: 0.8rem;
-    border: 1px solid rgb(72, 219, 251);
+    border: ${({ theme }) => theme.border};
     margin-bottom: 3.2rem;
     background-color: black;
-    color: rgb(72, 219, 251);
-  }
-  button {
-    border: 1px solid rgb(72, 219, 251);
-    background-color: black;
-    color: rgb(72, 219, 251);
+    color: ${({ theme }) => theme.color.primary};
+    border-radius: ${({ theme }) => theme.borderRadius};
+    &:focus {
+      box-shadow: ${({ theme }) => theme.boxShadow};
+      outline: none;
+    }
   }
 `;
 
@@ -72,22 +76,34 @@ const ContactHeadingPrimaryStyled = styled.h2`
 const ContactHeadingSecundaryStyled = styled.h6`
   color: ${({ theme }) => theme.textColor.dark};
   font-size: 1.8rem;
-  margin-bottom: 2.5rem;
+  // margin-bottom: 2.5rem;
+  margin-bottom: 5rem;
 `;
 
 const ContactButtonStyled = styled.button`
   align-self: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.55rem 1.5rem;
   font-size: 2.25rem;
+  border: ${({ theme }) => theme.border};
+  background-color: black;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  color: ${({ theme }) => theme.color.primary};
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
 `;
 
 const ContactUlStyled = styled.ul`
   display: flex;
+  margin-top: 4rem;
   gap: 2rem;
   svg {
-    fill: red;
-    width: 4rem;
-    height: 4rem;
+    fill: ${({ theme }) => theme.color.primary};
+    width: 3.5rem;
+    height: 3.5rem;
   }
 `;
 
@@ -117,13 +133,19 @@ const ContactSection = () => {
         </ContactFormStyled>
         <ContactUlStyled>
           <li>
-            <DiHtml5 />
+            <a href="#home">
+              <DiHtml5 />
+            </a>
           </li>
           <li>
-            <DiHtml5 />
+            <a href="#home">
+              <DiHtml5 />
+            </a>
           </li>
           <li>
-            <DiHtml5 />
+            <a href="#home">
+              <DiHtml5 />
+            </a>
           </li>
         </ContactUlStyled>
       </FormSectionStyled>

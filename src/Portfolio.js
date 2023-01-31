@@ -9,7 +9,7 @@ const Portfolio = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        {/* <Modal /> */}
+        <Modal />
         <GlobalStyles />
         <Navbar />
         <MainContainer />

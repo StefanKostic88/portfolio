@@ -15,22 +15,29 @@ const ProjectCard = (props) => {
     props.onCardClick(id);
     return id;
   };
+  console.log(props);
 
   return (
-    <ProjectCardStyled>
+    <ProjectCardStyled onClick={openProcjet}>
       <header>
         <img src={props.projectDetailsObj.img} alt="" />
       </header>
       <footer>
         <ProjectHeadingStyled>
-          {props.projectDetailsObj.name}
+          {props.projectDetailsObj.title}
         </ProjectHeadingStyled>
         <ProcjetUlStyled>
           {props.projectDetailsObj.iconsArr.map((el, index) => (
             <li key={index}>{el}</li>
           ))}
         </ProcjetUlStyled>
-        <ProcjetButtonStyled onClick={openProcjet}>Details</ProcjetButtonStyled>
+        <ProcjetButtonStyled>
+          Details
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </ProcjetButtonStyled>
       </footer>
     </ProjectCardStyled>
   );

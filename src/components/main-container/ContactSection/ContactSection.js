@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { DiJavascript1, DiSass, DiHtml5 } from "react-icons/di";
+import { useState } from "react";
 
 const SectionStyled = styled.div`
   position: relative;
@@ -25,19 +26,29 @@ const FormSectionStyled = styled.div`
   justify-content: center;
   padding: 1.6rem;
   min-height: 53rem;
-  min-width: 70%;
+  min-width: 50%;
   background-color: black;
   border: ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.boxShadow};
+  @media ${({ theme }) => theme.breakpoints.md} {
+    min-width: 70%;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    min-width: 80%;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    min-width: 90%;
+  }
 `;
 
 const ContactFormStyled = styled.form`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 95%;
 
   input {
+    font-family: Orbitron, sans-serif;
     font-size: 1.6rem;
     padding: 0.8rem;
     border: ${({ theme }) => theme.border};
@@ -51,6 +62,8 @@ const ContactFormStyled = styled.form`
     }
   }
   textarea {
+    font-family: Orbitron, sans-serif;
+    resize: none;
     font-size: 1.6rem;
     padding: 0.8rem;
     border: ${({ theme }) => theme.border};
@@ -81,13 +94,17 @@ const ContactHeadingSecundaryStyled = styled.h6`
 `;
 
 const ContactButtonStyled = styled.button`
+  font-family: Orbitron, sans-serif;
+  text-transform: uppercase;
   align-self: center;
   padding: 0.55rem 1.5rem;
-  font-size: 2.25rem;
+  font-size: 1.65rem;
+  letter-spacing: 1px;
   border: ${({ theme }) => theme.border};
   background-color: black;
   border-radius: ${({ theme }) => theme.borderRadius};
-  color: ${({ theme }) => theme.color.primary};
+  // color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.textColor.dark};
   cursor: pointer;
   &:focus,
   &:hover {
@@ -108,6 +125,28 @@ const ContactUlStyled = styled.ul`
 `;
 
 const ContactSection = () => {
+  const [nameInputValue, setNameInputValue] = useState("");
+  const [emailInputValue, setEmailInputValue] = useState("");
+  const [messageInputValue, setMessageInputValue] = useState("");
+
+  const nameInputChangeHandler = (e) => {
+    setNameInputValue(e.target.value);
+  };
+
+  const emailInputChangeHandler = (e) => {
+    setEmailInputValue(e.target.value);
+  };
+
+  const messageInputChangeHandler = (e) => {
+    setMessageInputValue(e.target.value);
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log("submit");
+    console.log(nameInputValue, emailInputValue, messageInputValue);
+  };
+
   return (
     <SectionStyled>
       <div>
@@ -119,15 +158,24 @@ const ContactSection = () => {
         </ContactHeadingSecundaryStyled>
       </div>
       <FormSectionStyled>
-        <ContactFormStyled action="">
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
+        <ContactFormStyled action="" onSubmit={formSubmitHandler}>
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={nameInputChangeHandler}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={emailInputChangeHandler}
+          />
           <textarea
             name="message"
             id=""
             cols="30"
             rows="10"
             placeholder="Your Message"
+            onChange={messageInputChangeHandler}
           ></textarea>
           <ContactButtonStyled type="submit">Submit</ContactButtonStyled>
         </ContactFormStyled>

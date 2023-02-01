@@ -21,7 +21,6 @@ body {
   // font-family: 'Orbitron', sans-serif;
   font-size: 1.6rem;
   background-color: black;
-  // overflow-x: hidden;
 }
 h1 {
   font-size: 8rem

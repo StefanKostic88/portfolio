@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Theme.js";
 import GlobalStyles from "./components/styles/Global.js";
@@ -76,6 +77,8 @@ const projects = [
   },
 ];
 
+createBrowserRouter([{ path: "/" }]);
+
 const Portfolio = () => {
   const [modalIsShown, setModalIsShown] = useState(false);
   const [modalInfo, setModalInfo] = useState({
@@ -113,6 +116,7 @@ const Portfolio = () => {
       <>
         <CardContext.Provider value={projectsAndModalContext}>
           {modalIsShown && <Modal />}
+          {/* <Modal /> */}
           <GlobalStyles />
           <Navbar />
           <MainContainer />

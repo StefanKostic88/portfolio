@@ -41,14 +41,14 @@ export const ProjectCardStyled = styled.figure`
   box-shadow: ${({ theme }) => theme.boxShadow};
   border: ${({ theme }) => theme.border};
   width: 31rem;
-  height: 30rem;
+  height: 32rem;
   display: flex;
   flex-direction: column;
   transition: all 200ms linear;
   cursor: pointer;
   @media ${({ theme }) => theme.breakpoints.lg} {
     width: 28rem;
-  height: 27rem;
+  height: 29rem;
   };
   @media(max-width: 925px){
     width: 31rem;
@@ -94,7 +94,10 @@ export const ProjectHeadingStyled = styled.h5`
   color: ${({ theme }) => theme.textColor.light};
   font-size: 1.75rem;
   text-shadow: ${({ theme }) => theme.color.primary} 5px -2px 25px;
-  margin-bottom: 1.75rem;
+  // margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
+  // margin-top: 1.25rem;
+  margin-top: 1.75rem;
 `;
 
 export const ProcjetUlStyled = styled.ul`
@@ -103,9 +106,10 @@ export const ProcjetUlStyled = styled.ul`
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.25rem;
+
   svg {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 2.75rem;
+    height: 2.75rem;
     fill: ${({ theme }) => theme.color.primary};
   }
 `;
@@ -117,6 +121,120 @@ export const ProcjetButtonStyled = styled.button`
   text-shadow: ${({ theme }) => theme.color.primary} 5px -2px 25px;
   cursor: pointer;
   border: ${({ theme }) => theme.border};
-  padding: 0.55rem 1.25rem;
+  padding: 0.8rem 1.25rem;
+  font-size: 1.4rem;
   border-radius: ${({ theme }) => theme.borderRadius};
+
+  position: relative;
+
+  span:nth-child(1) {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.primary};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  &:hover span:nth-child(1),
+  &:focus span:nth-child(1) {
+    top: -1px;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100%;
+    width: 2px;
+    transform-origin: right;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(0);
+    // transform-origin: top center;
+    transform-origin: center bottom;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(2),
+  &:focus span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100%;
+    width: 2px;
+    transform-origin: right;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(1);
+    // transform-origin: center bottom;
+    transform-origin: top center;
+  }
+  span:nth-child(3) {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(3),
+  &:focus span:nth-child(3) {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 200ms linear;
+  }
+  span:nth-child(4) {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(4),
+  &:focus span:nth-child(4) {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 200ms linear;
+  }
 `;

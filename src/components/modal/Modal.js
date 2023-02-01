@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import CardContext from "../../store/card-context";
 import styled from "styled-components";
 import { ImReply } from "react-icons/im";
@@ -78,25 +79,136 @@ const VersionsCardPartStyled = styled.ul`
   justify-content: flex-end;
   gap: 1.6rem;
   a {
-    color: rgb(189, 189, 189);
-    border: 1px solid rgb(82, 219, 251);
-    border-radius: 3px;
-    // background-color: red;
-    font-size: 1.6rem;
-    padding: 0.8rem 1rem;
-    cursor: pointer;
+    // color: rgb(189, 189, 189);
+    // border: 1px solid rgb(82, 219, 251);
+    // border-radius: 3px;
+    // // background-color: red;
+    // font-size: 1.6rem;
+    // padding: 0.8rem 1rem;
+    // cursor: pointer;
   }
 `;
 
-const ProjectIconStyled = styled.div`
+const ModalLinkStyled = styled.a`
+  color: rgb(189, 189, 189);
   border: 1px solid rgb(82, 219, 251);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem 1rem;
   border-radius: 3px;
-  svg {
-    color: rgb(189, 189, 189);
+  // background-color: red;
+  font-size: 1.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+
+  position: relative;
+
+  span:nth-child(1) {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.primary};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  &:hover span:nth-child(1),
+  &:focus span:nth-child(1) {
+    top: -1px;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+  }
+
+  span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100%;
+    width: 2px;
+    transform-origin: right;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(0);
+    // transform-origin: top center;
+    transform-origin: center bottom;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(2),
+  &:focus span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100%;
+    width: 2px;
+    transform-origin: right;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(1);
+    // transform-origin: center bottom;
+    transform-origin: top center;
+  }
+  span:nth-child(3) {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(3),
+  &:focus span:nth-child(3) {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 200ms linear;
+  }
+  span:nth-child(4) {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 200ms linear;
+  }
+  &:hover span:nth-child(4),
+  &:focus span:nth-child(4) {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 200ms linear;
   }
 `;
 
@@ -128,18 +240,29 @@ const Modal = () => {
           </ProjectParagraphStyled>
         </UpperCardPartStyled>
         <LowerCardPartStyled>
-          <ProjectIconStyled onClick={closeModal}>
-            <a href="www.google.com">
-              <ImReply />
-            </a>
-          </ProjectIconStyled>
+          <ModalLinkStyled href="www.google.com" onClick={closeModal}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ImReply />
+          </ModalLinkStyled>
+
           <VersionsCardPartStyled>
-            <a href={cardCtx.info.sourceCode} target="_blank">
+            <ModalLinkStyled href={cardCtx.info.sourceCode} target="_blank">
               Sorce Code
-            </a>
-            <a href={cardCtx.info.liveVersion} target="_blank">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </ModalLinkStyled>
+            <ModalLinkStyled href={cardCtx.info.liveVersion} target="_blank">
               Live Version
-            </a>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </ModalLinkStyled>
           </VersionsCardPartStyled>
         </LowerCardPartStyled>
       </ProjectCardDetialsStyled>

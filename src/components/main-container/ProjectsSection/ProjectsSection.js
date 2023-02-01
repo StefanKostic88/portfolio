@@ -12,6 +12,8 @@ const ProjectsSection = () => {
     modalObj(targetedCard);
   };
 
+  console.log(projectsArr);
+
   return (
     <SectionProjectStyled>
       <div>
@@ -21,7 +23,7 @@ const ProjectsSection = () => {
             onCardClick={openProcjet}
             projectDetailsObj={{
               img: el.img,
-              name: el.name,
+              title: el.title,
               iconsArr: el.iconsArr,
               id: el.id,
             }}

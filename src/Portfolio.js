@@ -89,12 +89,12 @@ const Portfolio = () => {
     liveVersion: "",
   });
 
-  useEffect(() => {
-    console.log("use");
-    return () => {
-      console.log("clearn");
-    };
-  }, []);
+  // useEffect(() => {
+  //   console.log("use");
+  //   return () => {
+  //     console.log("clearn");
+  //   };
+  // }, []);
 
   const showModal = function () {
     setModalIsShown((prevState) => !prevState);

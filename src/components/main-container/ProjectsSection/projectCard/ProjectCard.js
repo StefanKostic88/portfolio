@@ -15,7 +15,7 @@ const ProjectCard = (props) => {
     props.onCardClick(id);
     return id;
   };
-  console.log(props);
+  // console.log(props);
 
   return (
     <ProjectCardStyled onClick={openProcjet}>

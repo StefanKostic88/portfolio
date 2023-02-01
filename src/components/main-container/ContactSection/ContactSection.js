@@ -1,7 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { DiJavascript1, DiSass, DiHtml5 } from "react-icons/di";
-import { useState } from "react";
 
 const SectionStyled = styled.div`
   position: relative;
@@ -111,6 +111,16 @@ const ContactButtonStyled = styled.button`
     outline: none;
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
+  &:disabled {
+    color: #762020;
+    box-shadow: 0 0 0 1px #762020;
+    border: 1px solid #762020;
+    cursor: not-allowed;
+    &:hover {
+      outline: none;
+      box-shadow: none;
+    }
+  }
 `;
 
 const ContactUlStyled = styled.ul`
@@ -119,32 +129,94 @@ const ContactUlStyled = styled.ul`
   gap: 2rem;
   svg {
     fill: ${({ theme }) => theme.color.primary};
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 `;
 
+// console.log(ContactFormStyled); dodaj error prop
+
 const ContactSection = () => {
   const [nameInputValue, setNameInputValue] = useState("");
+  const [nameInputIsValid, setNameInputIsValid] = useState(false);
   const [emailInputValue, setEmailInputValue] = useState("");
+  const [emailInputIsValid, setEmailInputIsValid] = useState(false);
   const [messageInputValue, setMessageInputValue] = useState("");
 
+  const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
+  const [EmailInputIsTouched, SetEmailInputIsTouched] = useState(false);
+
   const nameInputChangeHandler = (e) => {
-    setNameInputValue(e.target.value);
+    setNameInputIsTouched(true);
+    if (e.target.value === "") {
+      // console.log("isNotValid");
+      setNameInputIsValid(false);
+      return;
+    } else {
+      setNameInputValue(e.target.value);
+      setNameInputIsValid(true);
+    }
   };
+  const nameInputBlurHandler = () => {
+    if (nameInputIsTouched && !nameInputIsValid) {
+      // console.log("blur: not valid");
+      //add error style
+      return;
+    }
+  };
+  const nameInputFocusHandler = () => {
+    setNameInputIsTouched(true);
+    // console.log("focus");
+  };
+
+  /////
 
   const emailInputChangeHandler = (e) => {
-    setEmailInputValue(e.target.value);
+    e.preventDefault();
+    // setEmailInputValue(e.target.value);
+    console.log(e.target.value.includes("@"));
+    if (e.target.value === "" || !e.target.value.includes("@")) {
+      // console.log("isNotValid");
+      setEmailInputIsValid(false);
+      return;
+    } else {
+      setEmailInputValue(e.target.value);
+      setEmailInputIsValid(true);
+    }
+  };
+  // console.log(emailInputIsValid);
+
+  const emailInputBlurHandler = () => {
+    if (EmailInputIsTouched && !emailInputIsValid) {
+      // console.log("blur: not valid");
+      //add error style
+      return;
+    }
   };
 
+  const emailInputFocusHandler = () => {
+    SetEmailInputIsTouched(true);
+    console.log("mail focus");
+  };
+
+  // console.log(EmailInputIsTouched);
+
+  ////
   const messageInputChangeHandler = (e) => {
     setMessageInputValue(e.target.value);
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("submit");
-    console.log(nameInputValue, emailInputValue, messageInputValue);
+    if (!nameInputIsValid || !emailInputIsValid) {
+      console.log(nameInputIsValid, "Name is not Valid");
+      // console.log("name is nov valid");
+      // console.log(nameInputValue);
+    } else {
+      console.log(nameInputValue, "valid name");
+      console.log(nameInputIsValid, "Name Valid");
+    }
+    // console.log("submit");
   };
 
   return (
@@ -163,11 +235,15 @@ const ContactSection = () => {
             type="text"
             placeholder="Name"
             onChange={nameInputChangeHandler}
+            onBlur={nameInputBlurHandler}
+            onFocus={nameInputFocusHandler}
           />
           <input
             type="email"
             placeholder="Email"
             onChange={emailInputChangeHandler}
+            onBlur={emailInputBlurHandler}
+            onFocus={emailInputFocusHandler}
           />
           <textarea
             name="message"
@@ -177,7 +253,9 @@ const ContactSection = () => {
             placeholder="Your Message"
             onChange={messageInputChangeHandler}
           ></textarea>
-          <ContactButtonStyled type="submit">Submit</ContactButtonStyled>
+          <ContactButtonStyled type="submit" disabled={false}>
+            Submit
+          </ContactButtonStyled>
         </ContactFormStyled>
         <ContactUlStyled>
           <li>
@@ -187,12 +265,12 @@ const ContactSection = () => {
           </li>
           <li>
             <a href="#home">
-              <DiHtml5 />
+              <DiJavascript1 />
             </a>
           </li>
           <li>
             <a href="#home">
-              <DiHtml5 />
+              <DiSass />
             </a>
           </li>
         </ContactUlStyled>

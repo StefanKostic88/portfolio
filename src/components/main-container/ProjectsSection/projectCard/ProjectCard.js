@@ -9,9 +9,11 @@ import CardContext from "../../../../store/card-context";
 
 const ProjectCard = (props) => {
   const cardCtx = useContext(CardContext);
-  // console.log(cardCtx);
   const openProcjet = function () {
     cardCtx.cardIsClicked();
+    const id = props.projectDetailsObj.id;
+    props.onCardClick(id);
+    return id;
   };
 
   return (

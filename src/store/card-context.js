@@ -10,6 +10,7 @@ const CardContext = React.createContext({
     liveVersion: "",
   },
   projectsArr: [],
+  info: null,
 });
 
 export default CardContext;

@@ -1,42 +1,29 @@
-import ProjectCard from "./projectCard/ProjectCard";
-import { SectionProjectStyled } from "../../styles/ProjectStyles/ProjectStyles";
-
 import { useContext } from "react";
+import ProjectCard from "./projectCard/ProjectCard";
 import CardContext from "../../../store/card-context";
 
-const openProcjet = function (i) {
-  // const x = [
-  //   {
-  //     img: images,
-  //     name: "Build Estate",
-  //     iconsArr: [<DiJavascript1 />, <DiSass />, <DiHtml5 />],
-  //     id: 2,
-  //   },
-  //   {
-  //     img: images,
-  //     name: "Light Saber",
-  //     iconsArr: [<DiJavascript1 />, <DiSass />, <DiHtml5 />],
-  //     id: 3,
-  //   },
-  // ];
-  // const project = x.find((el, index) => index === i);
-  // console.log(x, i, project);
-};
+import { SectionProjectStyled } from "../../styles/ProjectStyles/ProjectStyles";
 
 const ProjectsSection = () => {
-  const { projectsArr } = useContext(CardContext);
-  // console.log(projectsArr);
+  const { projectsArr, modalObj } = useContext(CardContext);
+
+  const openProcjet = function (id) {
+    var targetedCard = projectsArr.find((el) => el.id === id);
+    modalObj(targetedCard);
+  };
+
   return (
     <SectionProjectStyled>
       <div>
         {projectsArr.map((el) => (
           <ProjectCard
             key={el.id}
-            onClick={openProcjet}
+            onCardClick={openProcjet}
             projectDetailsObj={{
               img: el.img,
               name: el.name,
               iconsArr: el.iconsArr,
+              id: el.id,
             }}
           />
         ))}

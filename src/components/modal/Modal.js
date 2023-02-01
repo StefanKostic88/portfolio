@@ -1,8 +1,6 @@
 import { useContext } from "react";
-import styled from "styled-components";
-
 import CardContext from "../../store/card-context";
-import cardImg from "../../nestozascreen.png";
+import styled from "styled-components";
 import { ImReply } from "react-icons/im";
 
 const OverLayStyled = styled.div`
@@ -104,30 +102,29 @@ const ProjectIconStyled = styled.div`
 
 const Modal = () => {
   const cardCtx = useContext(CardContext);
-  console.log(cardCtx);
   const closeModal = (e) => {
     e.preventDefault();
-    // console.log(e.target);
     cardCtx.cardIsClicked();
-    // console.log(cardCtx);
-    // console.log("click");
+    cardCtx.info = null;
   };
 
   return (
-    <OverLayStyled onClick={closeModal}>
+    <OverLayStyled>
+      {/* onClick={closeModal} */}
       <ProjectCardDetialsStyled>
         <UpperCardPartStyled>
           <ProjectHeaderStyled>
-            <img src={cardImg} alt="" />
+            <img src={cardCtx.info.img} alt="" />
           </ProjectHeaderStyled>
-          <ProjectCardTitleStyled>Game Squad</ProjectCardTitleStyled>
+          <ProjectCardTitleStyled>{cardCtx.info.title}</ProjectCardTitleStyled>
           <ProjectParagraphStyled>
-            Fully responsive movies and series application coded in React and
+            {cardCtx.info.textContent}
+            {/* Fully responsive movies and series application coded in React and
             Material Ui, that is using Axios to pull the data from the MovieDB
             API, and display it, based on users selection. Besides HTTP
             requests,the app has some interesting features like dark and light
             theme,external components such as carousel and an option to search
-            for a specific actor via Wikipedia API.
+            for a specific actor via Wikipedia API. */}
           </ProjectParagraphStyled>
         </UpperCardPartStyled>
         <LowerCardPartStyled>
@@ -137,8 +134,12 @@ const Modal = () => {
             </a>
           </ProjectIconStyled>
           <VersionsCardPartStyled>
-            <a href="www.google.com">Sorce Code</a>
-            <a href="www.google.com">Live Version</a>
+            <a href={cardCtx.info.sourceCode} target="_blank">
+              Sorce Code
+            </a>
+            <a href={cardCtx.info.liveVersion} target="_blank">
+              Live Version
+            </a>
           </VersionsCardPartStyled>
         </LowerCardPartStyled>
       </ProjectCardDetialsStyled>

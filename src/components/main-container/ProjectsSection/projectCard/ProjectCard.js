@@ -1,11 +1,19 @@
+import { useContext } from "react";
 import {
   ProjectCardStyled,
   ProjectHeadingStyled,
   ProcjetUlStyled,
   ProcjetButtonStyled,
 } from "../../../styles/ProjectStyles/ProjectStyles";
+import CardContext from "../../../../store/card-context";
 
 const ProjectCard = (props) => {
+  const cardCtx = useContext(CardContext);
+  // console.log(cardCtx);
+  const openProcjet = function () {
+    cardCtx.cardIsClicked();
+  };
+
   return (
     <ProjectCardStyled>
       <header>
@@ -20,7 +28,7 @@ const ProjectCard = (props) => {
             <li key={index}>{el}</li>
           ))}
         </ProcjetUlStyled>
-        <ProcjetButtonStyled>Details</ProcjetButtonStyled>
+        <ProcjetButtonStyled onClick={openProcjet}>Details</ProcjetButtonStyled>
       </footer>
     </ProjectCardStyled>
   );

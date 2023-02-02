@@ -12,6 +12,8 @@ import {
 
 import { ImGithub, ImInstagram, ImLinkedin, ImArrowDown } from "react-icons/im";
 import AnimatedHeroBacground from "../../../4NB4.gif";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const infoArr = [
   { infoName: "Download cv", infoHref: "#about" },
@@ -25,10 +27,20 @@ const iconsArr = [
 ];
 
 const HeroSection = () => {
+  const [mainHeadingIsLighted, setMainHeadingIsLighted] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMainHeadingIsLighted(true);
+    }, 1500);
+  }, []);
+
   return (
     <SectionHeroStyled>
       <HeadingSecundaryStyled>Hello, i'm</HeadingSecundaryStyled>
-      <HeadingPrimaryStyled>Stefan</HeadingPrimaryStyled>
+      <HeadingPrimaryStyled light={mainHeadingIsLighted}>
+        Stefan
+      </HeadingPrimaryStyled>
       <HeadingTerciaryStyled>
         Self
         <HeadingLinesStyled>

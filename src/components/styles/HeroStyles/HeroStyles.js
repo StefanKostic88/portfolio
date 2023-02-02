@@ -38,10 +38,10 @@ export const HeadingPrimaryStyled = styled.h1`
   text-transform: uppercase;
   font-weight: 900;
   font-family: Orbitron;
-  text-shadow: ${({ theme }) => theme.color.primary} 5px -2px 25px;
-  // text-shadow: #48dbfba3 5px -2px 25px;
-  // text-shadow: #48fb51 5px -2px 25px;
-  // text-shadow: #48dbfbbd 5px -2px 25px;
+  transition: all 700ms ease-in-out;
+  // text-shadow: ${({ theme }) => theme.color.primary} 5px -2px 25px;
+  text-shadow: ${(props) => (props.light ? "#48dbfb 5px -2px 25px;" : "none;")}
+
 
   color: ${({ theme }) => theme.textColor.light};
   @media ${({ theme }) => theme.breakpoints.lg} {
@@ -76,6 +76,7 @@ export const HeadingSecundaryStyled = styled.h2`
   text-shadow: #48dbfba3 2px -1px 15px;
 
   color: ${({ theme }) => theme.textColor.dark};
+
   @media ${({ theme }) => theme.breakpoints.lg} {
     font-size: 3.6rem;
     margin-bottom: 1.25rem;

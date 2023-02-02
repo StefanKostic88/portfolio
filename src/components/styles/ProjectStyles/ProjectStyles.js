@@ -40,8 +40,8 @@ export const ProjectCardStyled = styled.figure`
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.boxShadow};
   border: ${({ theme }) => theme.border};
-  width: 31rem;
-  height: 32rem;
+  width: 33rem;
+  height: 34rem;
   display: flex;
   flex-direction: column;
   transition: all 200ms linear;
@@ -51,15 +51,15 @@ export const ProjectCardStyled = styled.figure`
   height: 29rem;
   };
   @media(max-width: 925px){
-    width: 31rem;
+    width: 35rem;
   height: 30rem;
    };
    @media ${({ theme }) => theme.breakpoints.md} {
-    width: 28rem;
+    width: 29rem;
   height: 27rem;
   };
   @media(max-width: 620px){
-    width: 40rem;
+    width: 42rem;
     height: 30rem;
    };
    @media ${({ theme }) => theme.breakpoints.xsm} {

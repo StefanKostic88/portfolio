@@ -5,14 +5,14 @@ import { theme } from "./Theme.js";
 import GlobalStyles from "./components/styles/Global.js";
 import Navbar from "./components/Navbar/Navbar.js";
 import MainContainer from "./components/main-container/MainContainer.js";
-import Modal from "./components/modal/Modal.js";
+import ProjectCardModal from "./components/modal/ProjectCardModal.js";
 
 import CardContext from "./store/card-context.js";
 import { DiJavascript1, DiSass, DiHtml5 } from "react-icons/di";
 import images from "../src/pexels-felix-mittermeier-957061.jpg";
 import cardImg from "../src/nestozascreen.png";
 import cardImg2 from "../src/pexels-drew-rae-580679.jpg";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const projects = [
   {
@@ -115,9 +115,10 @@ const Portfolio = () => {
     <ThemeProvider theme={theme}>
       <>
         <CardContext.Provider value={projectsAndModalContext}>
-          {modalIsShown && <Modal />}
-          {/* <Modal /> */}
+          {modalIsShown && <ProjectCardModal />}
           <GlobalStyles />
+          {/* <ProjectCardModal /> */}
+
           <Navbar />
           <MainContainer />
         </CardContext.Provider>

@@ -1,25 +1,16 @@
 import { useContext } from "react";
+import ReactDom from "react-dom";
+import BackDrop from "./BackDrop";
 
 import CardContext from "../../store/card-context";
 import styled from "styled-components";
 import { ImReply } from "react-icons/im";
 
-const OverLayStyled = styled.div`
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: black;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 const ProjectCardDetialsStyled = styled.article`
   max-width: 56rem;
   min-height: 76.8rem;
   background-color: black;
-  width: 100%;
+  // width: 100%;
   // height: auto;
   border-radius: 0.32rem;
   padding: 0.8rem 1.6rem 1.6rem;
@@ -212,7 +203,11 @@ const ModalLinkStyled = styled.a`
   }
 `;
 
-const Modal = () => {
+// const BackDrop = (props) => {
+//   return <OverLayStyled>{props.children}</OverLayStyled>;
+// };
+
+const CardModal = () => {
   const cardCtx = useContext(CardContext);
   const closeModal = (e) => {
     e.preventDefault();
@@ -221,8 +216,7 @@ const Modal = () => {
   };
 
   return (
-    <OverLayStyled>
-      {/* onClick={closeModal} */}
+    <BackDrop>
       <ProjectCardDetialsStyled>
         <UpperCardPartStyled>
           <ProjectHeaderStyled>
@@ -232,22 +226,21 @@ const Modal = () => {
           <ProjectParagraphStyled>
             {cardCtx.info.textContent}
             {/* Fully responsive movies and series application coded in React and
-            Material Ui, that is using Axios to pull the data from the MovieDB
-            API, and display it, based on users selection. Besides HTTP
-            requests,the app has some interesting features like dark and light
-            theme,external components such as carousel and an option to search
-            for a specific actor via Wikipedia API. */}
+          Material Ui, that is using Axios to pull the data from the MovieDB
+          API, and display it, based on users selection. Besides HTTP
+          requests,the app has some interesting features like dark and light
+          theme,external components such as carousel and an option to search
+          for a specific actor via Wikipedia API. */}
           </ProjectParagraphStyled>
         </UpperCardPartStyled>
         <LowerCardPartStyled>
-          <ModalLinkStyled href="www.google.com" onClick={closeModal}>
+          <ModalLinkStyled onClick={closeModal}>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             <ImReply />
           </ModalLinkStyled>
-
           <VersionsCardPartStyled>
             <ModalLinkStyled href={cardCtx.info.sourceCode} target="_blank">
               Sorce Code
@@ -266,11 +259,22 @@ const Modal = () => {
           </VersionsCardPartStyled>
         </LowerCardPartStyled>
       </ProjectCardDetialsStyled>
-    </OverLayStyled>
+    </BackDrop>
   );
 };
 
-export default Modal;
+const ProjectCardModal = () => {
+  return (
+    <>
+      {ReactDom.createPortal(
+        <CardModal />,
+        document.getElementById("project-modal")
+      )}
+    </>
+  );
+};
+
+export default ProjectCardModal;
 
 ///za ispravku
 // Game squad
@@ -283,3 +287,16 @@ export default Modal;
 // side bar genre padding sredi
 
 // slike max width 10rem => ispod onda width 100%
+
+// const OverLayStyled = styled.div`
+//   position: fixed;
+//   inset: 0;
+//   width: 100%;
+//   height: 100vh;
+//   background-color: black;
+//   z-index: 5;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   // background-color: red;
+// `;

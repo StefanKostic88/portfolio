@@ -20,7 +20,10 @@ const ProjectCard = (props) => {
   return (
     <ProjectCardStyled onClick={openProcjet}>
       <header>
-        <img src={props.projectDetailsObj.img} alt="" />
+        <img
+          src={props.projectDetailsObj.img}
+          alt={props.projectDetailsObj.title}
+        />
       </header>
       <footer>
         <ProjectHeadingStyled>

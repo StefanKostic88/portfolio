@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-
-import { DiJavascript1, DiSass, DiHtml5 } from "react-icons/di";
+import { useEffect } from "react";
 
 const SectionStyled = styled.div`
   position: relative;
@@ -56,6 +55,8 @@ const ContactFormStyled = styled.form`
     background-color: black;
     color: ${({ theme }) => theme.color.primary};
     border-radius: ${({ theme }) => theme.borderRadius};
+    cursor: pointer;
+    transition: all 300ms;
     &:focus {
       box-shadow: ${({ theme }) => theme.boxShadow};
       outline: none;
@@ -71,6 +72,8 @@ const ContactFormStyled = styled.form`
     background-color: black;
     color: ${({ theme }) => theme.color.primary};
     border-radius: ${({ theme }) => theme.borderRadius};
+    cursor: pointer;
+    transition: all 300ms;
     &:focus {
       box-shadow: ${({ theme }) => theme.boxShadow};
       outline: none;
@@ -79,16 +82,24 @@ const ContactFormStyled = styled.form`
 `;
 
 const ContactHeadingPrimaryStyled = styled.h2`
+  font-family: Orbitron, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.textColor.dark};
   text-shadow: ${({ theme }) => theme.boxShadow};
   font-weight: 400;
-  font-size: 2.8rem;
+  // font-size: 2.8rem;
+  font-size: 3.2rem;
   text-align: center;
   margin-bottom: 3.5rem;
 `;
 const ContactHeadingSecundaryStyled = styled.h6`
+  font-family: Orbitron, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.textColor.dark};
-  font-size: 1.8rem;
+  // font-size: 1.8rem;
+  font-size: 2.2rem;
   // margin-bottom: 2.5rem;
   margin-bottom: 5rem;
 `;
@@ -106,31 +117,49 @@ const ContactButtonStyled = styled.button`
   // color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.textColor.dark};
   cursor: pointer;
+  transition: opacity 300ms;
   &:focus,
   &:hover {
     outline: none;
     box-shadow: ${({ theme }) => theme.boxShadow};
+    color: ${({ theme }) => theme.textColor.light};
   }
   &:disabled {
+    opacity: 0;
     color: #762020;
-    box-shadow: 0 0 0 1px #762020;
     border: 1px solid #762020;
     cursor: not-allowed;
     &:hover {
       outline: none;
+      color: #981919;
       box-shadow: none;
+      box-shadow: 0 0 0 1px #762020;
     }
   }
 `;
 
 const ContactUlStyled = styled.ul`
   display: flex;
+  align-self: stretch;
+  justify-content: space-around;
   margin-top: 4rem;
   gap: 2rem;
-  svg {
-    fill: ${({ theme }) => theme.color.primary};
-    width: 2.75rem;
-    height: 2.75rem;
+  // svg {
+  //   fill: ${({ theme }) => theme.color.primary};
+  //   width: 2.75rem;
+  //   height: 2.75rem;
+  // }
+  a {
+    font-family: Orbitron, sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.color.primary};
+    transition: text-shadow 300ms;
+    &:hover,
+    &:focus {
+      outline: none;
+      text-shadow: ${({ theme }) => theme.textShadow};
+    }
   }
 `;
 
@@ -139,17 +168,22 @@ const ContactUlStyled = styled.ul`
 const ContactSection = () => {
   const [nameInputValue, setNameInputValue] = useState("");
   const [nameInputIsValid, setNameInputIsValid] = useState(false);
+  const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
+
   const [emailInputValue, setEmailInputValue] = useState("");
   const [emailInputIsValid, setEmailInputIsValid] = useState(false);
-  const [messageInputValue, setMessageInputValue] = useState("");
+  const [emailInputIsTouched, SetEmailInputIsTouched] = useState(false);
 
-  const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
-  const [EmailInputIsTouched, SetEmailInputIsTouched] = useState(false);
+  const [messageInputValue, setMessageInputValue] = useState("");
+  const [messageInputIsValid, setMessageInputIsValid] = useState(false);
+  const [messageInputIsTouched, setMessageInputIsTouched] = useState(false);
+
+  const [formIsNotValid, setFormIsNotValid] = useState(true);
+
+  // let nameInputIsValid = false;
 
   const nameInputChangeHandler = (e) => {
-    setNameInputIsTouched(true);
-    if (e.target.value === "") {
-      // console.log("isNotValid");
+    if (e.target.value.trim() === "") {
       setNameInputIsValid(false);
       return;
     } else {
@@ -157,6 +191,11 @@ const ContactSection = () => {
       setNameInputIsValid(true);
     }
   };
+
+  const nameInputFocusHandler = () => {
+    setNameInputIsTouched(true);
+  };
+
   const nameInputBlurHandler = () => {
     if (nameInputIsTouched && !nameInputIsValid) {
       // console.log("blur: not valid");
@@ -164,19 +203,12 @@ const ContactSection = () => {
       return;
     }
   };
-  const nameInputFocusHandler = () => {
-    setNameInputIsTouched(true);
-    // console.log("focus");
-  };
-
-  /////
 
   const emailInputChangeHandler = (e) => {
     e.preventDefault();
     // setEmailInputValue(e.target.value);
-    console.log(e.target.value.includes("@"));
+    // console.log(!e.target.value.includes("@"));
     if (e.target.value === "" || !e.target.value.includes("@")) {
-      // console.log("isNotValid");
       setEmailInputIsValid(false);
       return;
     } else {
@@ -184,39 +216,62 @@ const ContactSection = () => {
       setEmailInputIsValid(true);
     }
   };
-  // console.log(emailInputIsValid);
+
+  const emailInputFocusHandler = () => {
+    SetEmailInputIsTouched(true);
+  };
 
   const emailInputBlurHandler = () => {
-    if (EmailInputIsTouched && !emailInputIsValid) {
+    if (emailInputIsTouched && !emailInputIsValid) {
       // console.log("blur: not valid");
       //add error style
       return;
     }
   };
 
-  const emailInputFocusHandler = () => {
-    SetEmailInputIsTouched(true);
-    console.log("mail focus");
-  };
-
-  // console.log(EmailInputIsTouched);
+  // console.log(emailInputTouchedAndValid);
 
   ////
   const messageInputChangeHandler = (e) => {
+    if (e.target.value.trim() === "") {
+      console.log("notValid");
+      setMessageInputIsValid(false);
+    } else {
+      setMessageInputIsValid(true);
+    }
     setMessageInputValue(e.target.value);
   };
 
+  const messageInputFocusHandler = () => {
+    setMessageInputIsTouched(true);
+  };
+
+  let nameInputTouchedAndValid = nameInputIsTouched && nameInputIsValid;
+  let emailInputTouchedAndValid = emailInputIsTouched && emailInputIsValid;
+  let messageInputTouchedAndValid =
+    messageInputIsValid && messageInputIsTouched;
+
+  useEffect(() => {
+    if (
+      nameInputTouchedAndValid &&
+      emailInputTouchedAndValid &&
+      messageInputTouchedAndValid
+    ) {
+      setFormIsNotValid(false);
+    } else {
+      setFormIsNotValid(true);
+    }
+  }, [
+    nameInputTouchedAndValid,
+    emailInputTouchedAndValid,
+    messageInputTouchedAndValid,
+  ]);
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (!nameInputIsValid || !emailInputIsValid) {
-      console.log(nameInputIsValid, "Name is not Valid");
-      // console.log("name is nov valid");
-      // console.log(nameInputValue);
-    } else {
-      console.log(nameInputValue, "valid name");
-      console.log(nameInputIsValid, "Name Valid");
+    if (!formIsNotValid) {
+      console.log(nameInputValue, emailInputValue, messageInputValue);
     }
-    // console.log("submit");
   };
 
   return (
@@ -252,26 +307,21 @@ const ContactSection = () => {
             rows="10"
             placeholder="Your Message"
             onChange={messageInputChangeHandler}
+            onFocus={messageInputFocusHandler}
           ></textarea>
-          <ContactButtonStyled type="submit" disabled={false}>
+          <ContactButtonStyled type="submit" disabled={formIsNotValid}>
             Submit
           </ContactButtonStyled>
         </ContactFormStyled>
         <ContactUlStyled>
           <li>
-            <a href="#home">
-              <DiHtml5 />
-            </a>
+            <a href="#home">Github</a>
           </li>
           <li>
-            <a href="#home">
-              <DiJavascript1 />
-            </a>
+            <a href="#home">Linkedin</a>
           </li>
           <li>
-            <a href="#home">
-              <DiSass />
-            </a>
+            <a href="#home">Instagram</a>
           </li>
         </ContactUlStyled>
       </FormSectionStyled>

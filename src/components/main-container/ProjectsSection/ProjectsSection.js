@@ -12,8 +12,6 @@ const ProjectsSection = () => {
     modalObj(targetedCard);
   };
 
-  console.log(projectsArr);
-
   return (
     <SectionProjectStyled>
       <div>

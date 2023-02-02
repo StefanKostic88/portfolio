@@ -1,6 +1,7 @@
 import Logo from "./Logo.js";
 import styled from "styled-components";
 import backG from "../../7t4e.gif";
+import { useEffect, useState } from "react";
 
 const NavStyled = styled.nav`
   display: flex;
@@ -60,7 +61,17 @@ const UlStyled = styled.ul`
   @media ${({ theme }) => {
       return theme.breakpoints.md;
     }} {
-    display: none;
+    display: ${(props) => props.toggleDisplyay};
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
   }
 `;
 
@@ -75,6 +86,9 @@ const HamburgerStyled = styled.div`
       return theme.breakpoints.md;
     }} {
     display: block;
+    position: fixed;
+    right: 1rem;
+    z-index: 1;
   }
 `;
 
@@ -87,7 +101,36 @@ const Bar1Styled = styled.div`
   top: 50%;
 `;
 
+const navBarArr = [
+  { title: "About", href: "#about", id: 1 },
+  { title: "Projects", href: "#projects", id: 2 },
+  { title: "Contact", href: "#contact", id: 3 },
+];
+
 const Navbar = () => {
+  const [navIsOpened, setNavIsOpened] = useState(false);
+  // const [hamurgerIsVisible, setHamburgerIsVisible] = useState(false);
+
+  useEffect(() => {
+    // window.addEventListener("resize", function () {
+    //   if (window.innerWidth === 775) {
+    //     setHamburgerIsVisible(true);
+    //     console.log(hamurgerIsVisible);
+    //   } else {
+    //     setHamburgerIsVisible(false);
+    //   }
+    //   console.log(hamurgerIsVisible);
+    // });
+  }, []);
+
+  const hanurgerMenuClickHandler = () => {
+    setTimeout(() => {
+      setNavIsOpened(() => !navIsOpened);
+    }, 500);
+  };
+
+  let addStyle = navIsOpened ? "flex" : "none";
+
   return (
     <NavStyled>
       <NavCenterStyled>
@@ -95,18 +138,16 @@ const Navbar = () => {
         <figure>
           <img src={backG} alt="" />
         </figure>
-        <UlStyled>
-          <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
-            <a href="/about">Projects</a>
-          </li>
-          <li>
-            <a href="/about">Contact</a>
-          </li>
+        <UlStyled toggleDisplyay={addStyle}>
+          {navBarArr.map((el, index) => {
+            return (
+              <li key={index} onClick={hanurgerMenuClickHandler}>
+                <a href={el.href}>{el.title}</a>
+              </li>
+            );
+          })}
         </UlStyled>
-        <HamburgerStyled>
+        <HamburgerStyled onClick={hanurgerMenuClickHandler}>
           <Bar1Styled></Bar1Styled>
           {/* <div></div>
           <div></div> */}

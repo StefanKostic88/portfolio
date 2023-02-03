@@ -1,10 +1,11 @@
 import { useContext } from "react";
+import React from "react";
 import ProjectCard from "./projectCard/ProjectCard";
 import CardContext from "../../../store/card-context";
 
 import { SectionProjectStyled } from "../../styles/ProjectStyles/ProjectStyles";
 
-const ProjectsSection = () => {
+const ProjectsSection = React.forwardRef((props, ref) => {
   const { projectsArr, modalObj } = useContext(CardContext);
 
   const openProcjet = function (id) {
@@ -13,7 +14,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <SectionProjectStyled>
+    <SectionProjectStyled id="projects" ref={ref}>
       <div>
         {projectsArr.map((el) => (
           <ProjectCard
@@ -30,7 +31,7 @@ const ProjectsSection = () => {
       </div>
     </SectionProjectStyled>
   );
-};
+});
 
 export default ProjectsSection;
 

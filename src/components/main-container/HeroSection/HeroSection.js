@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import React from "react";
 import {
   SectionHeroStyled,
   HeadingPrimaryStyled,
@@ -11,9 +13,7 @@ import {
 } from "../../styles/HeroStyles/HeroStyles";
 
 import { ImGithub, ImInstagram, ImLinkedin, ImArrowDown } from "react-icons/im";
-import AnimatedHeroBacground from "../../../imgs/4NB4.gif";
-import { useState } from "react";
-import { useEffect } from "react";
+import AnimatedHeroBacground from "../../../assets/imgs/4NB4.gif";
 
 const infoArr = [
   { infoName: "Download cv", infoHref: "#about" },
@@ -26,7 +26,7 @@ const iconsArr = [
   { iconName: ImLinkedin, href: "#linkedin" },
 ];
 
-const HeroSection = () => {
+const HeroSection = React.forwardRef((props, ref) => {
   const [mainHeadingIsLighted, setMainHeadingIsLighted] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <SectionHeroStyled>
+    <SectionHeroStyled id="hero" ref={ref}>
       <HeadingSecundaryStyled>Hello, i'm</HeadingSecundaryStyled>
       <HeadingPrimaryStyled light={mainHeadingIsLighted}>
         Stefan
@@ -80,6 +80,6 @@ const HeroSection = () => {
       </AnimatedBackgroundStyled>
     </SectionHeroStyled>
   );
-};
+});
 
 export default HeroSection;

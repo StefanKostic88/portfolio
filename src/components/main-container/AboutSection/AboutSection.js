@@ -1,3 +1,4 @@
+import React from "react";
 import {
   SectionAboutStyled,
   AboutContainerStyled,
@@ -9,8 +10,9 @@ import {
   AnimatedBackgroundCenterStyled,
 } from "../../styles/AboutStyles/AboutStyles";
 
-import AnimatedBottom from "../../../imgs/2Mul.gif";
-import AnimatedCenter from "../../../imgs/LCPT.gif";
+import AnimatedBottom from "../../../assets/imgs/2Mul.gif";
+import AnimatedCenter from "../../../assets/imgs/LCPT.gif";
+import portfolioImage from "../../../assets/imgs/20190227_215526.jpg";
 
 import {
   DiSass,
@@ -22,8 +24,6 @@ import {
   DiBootstrap,
   DiGitBranch,
 } from "react-icons/di";
-
-import portfolioImage from "../../../imgs/20190227_215526.jpg";
 
 const textArr = [
   `My name is Stefan Kostic and I am a 34 year old who 
@@ -54,14 +54,14 @@ const iconsArr = [
   <DiGitBranch />,
 ];
 
-const AboutSection = () => {
+const AboutSection = React.forwardRef((props, ref) => {
   const generateParagraphs = textArr.map((el, index) => (
     <ParagraphStyled key={index}>{el}</ParagraphStyled>
   ));
   const generateIcons = iconsArr.map((el, index) => <li key={index}>{el}</li>);
 
   return (
-    <SectionAboutStyled id="about">
+    <SectionAboutStyled id="about" ref={ref}>
       <AboutContainerStyled>
         <PortfolioImageStyled>
           <img src={portfolioImage} alt="portfolio-img" />
@@ -82,6 +82,6 @@ const AboutSection = () => {
       </AboutContainerStyled>
     </SectionAboutStyled>
   );
-};
+});
 
 export default AboutSection;

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useEffect } from "react";
+
+import intersectionObj from "../../../store/intersecting-context";
 
 const SectionStyled = styled.div`
   position: relative;
@@ -165,7 +167,7 @@ const ContactUlStyled = styled.ul`
 
 // console.log(ContactFormStyled); dodaj error prop
 
-const ContactSection = () => {
+const ContactSection = React.forwardRef((props, ref) => {
   const [nameInputValue, setNameInputValue] = useState("");
   const [nameInputIsValid, setNameInputIsValid] = useState(false);
   const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
@@ -181,6 +183,9 @@ const ContactSection = () => {
   const [formIsNotValid, setFormIsNotValid] = useState(true);
 
   // let nameInputIsValid = false;
+
+  const ctx = useContext(intersectionObj);
+  console.log(ctx);
 
   const nameInputChangeHandler = (e) => {
     if (e.target.value.trim() === "") {
@@ -275,7 +280,7 @@ const ContactSection = () => {
   };
 
   return (
-    <SectionStyled>
+    <SectionStyled id="contact" ref={ref}>
       <div>
         <ContactHeadingPrimaryStyled>
           Have a question <br /> or <br /> want to hire me?
@@ -327,6 +332,6 @@ const ContactSection = () => {
       </FormSectionStyled>
     </SectionStyled>
   );
-};
+});
 
 export default ContactSection;

@@ -148,7 +148,6 @@ const navBarArr = [
 
 const Navbar = () => {
   const [navIsOpened, setNavIsOpened] = useState(false);
-
   const hamburgerMenuClickHandler = () => {
     setTimeout(() => {
       setNavIsOpened(() => !navIsOpened);

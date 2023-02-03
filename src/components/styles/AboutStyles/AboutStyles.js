@@ -45,7 +45,8 @@ export const AboutHeading = styled.h3`
   text-shadow: ${({ theme }) => theme.boxShadow};
 
   @media${({ theme }) => theme.breakpoints.xsm} {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
+    text-align: center;
   }
 
   &:before {
@@ -57,6 +58,13 @@ export const AboutHeading = styled.h3`
     width: 0.75rem;
     background-color: ${({ theme }) => theme.color.primary};
     border-radius: 5px;
+
+    @media${({ theme }) => theme.breakpoints.xsm} {
+      height: 8%;
+      top: 105%;
+      width: 54%;
+      left: 23%;
+    }
   }
 `;
 
@@ -65,42 +73,77 @@ export const ParagraphStyled = styled.p`
   font-family: "Montserrat", sans-serif;
   // font-size: 1.8rem;
   font-size: 2.1rem;
+  line-height: 1.5;
 
   color: ${({ theme }) => theme.textColor.light};
   &:last-child {
     margin-bottom: 5rem;
     // margin-bottom: 0;
   }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    font-size: 2rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    font-size: 1.9rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    font-size: 1.8rem;
+    text-align: center;
+  }
 `;
 
 export const ListStyled = styled.ul`
   display: flex;
   justify-content: center;
-  gap: 1.25rem;
+  // gap: 1.25rem;
+  gap: 2.75rem;
+
   svg {
     fill: ${({ theme }) => theme.color.primary};
     height: 4.5rem;
     width: 4.5rem;
+
+    @media ${({ theme }) => theme.breakpoints.md} {
+      height: 4rem;
+      width: 4rem;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.sm} {
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+    @media ${({ theme }) => theme.breakpoints.xsm} {
+      height: 3rem;
+      width: 3rem;
+    }
   }
 
-  @media ${({ theme }) => theme.breakpoints.sm} {
+  @media ${({ theme }) => theme.breakpoints.md} {
+    gap: 2.5rem;
     flex-wrap: wrap;
-    gap: 0.5rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    gap: 1.5rem;
   }
   @media ${({ theme }) => theme.breakpoints.xsm} {
-    flex-wrap: wrap;
-    gap: 0.35rem;
+    gap: 1rem;
   }
 `;
 
 export const PortfolioImageStyled = styled.div`
   display: flex;
   // flex-direction: column;
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    justify-content: center;
+  }
 
   img {
-    // width: 100%;
     height: 30rem;
     width: auto;
+    @media ${({ theme }) => theme.breakpoints.xsm} {
+      height: 35rem;
+    }
   }
 `;
 

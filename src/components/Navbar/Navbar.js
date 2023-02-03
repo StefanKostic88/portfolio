@@ -1,150 +1,15 @@
-import Logo from "./Logo.js";
-import styled from "styled-components";
-import backG from "../../7t4e.gif";
-import { useEffect, useState } from "react";
+// import Logo from "./Logo.js";
+import { useState } from "react";
+import {
+  NavStyled,
+  NavCenterStyled,
+  UlStyled,
+  HamburgerStyled,
+  BarStyled,
+} from "../styles/NavbarStyles/NavbarStyles";
+import backG from "../../assets/imgs/7t4e.gif";
 
-const NavStyled = styled.nav`
-  display: flex;
-  justify-content: center;
-  min-height: 4.8rem;
-`;
-const NavCenterStyled = styled.div`
-  // background-color: black;
-  width: 100%;
-  max-width: 130rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media ${({ theme }) => {
-    return theme.breakpoints.lg;
-  }} {
-    padding: 0 1rem 0 3rem;
-  }
-
-  figure {
-    width: 6rem;
-    background color: red;
-    object-fit: cover;
-    img {
-      width: 100%;
-    }
-  }
-`;
-
-const UlStyled = styled.ul`
-  display: flex;
-  gap: 1rem;
-  li {
-    padding: 1rem 1.6rem;
-    a {
-      color: ${({ theme }) => theme.textColor.dark};
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 2px;
-      cursor: pointer;
-      &:link,
-      &:active {
-        font-size: 2.4rem;
-        text-transform: uppercase;
-        color: ${({ theme }) => theme.textLight};
-      }
-      &:hover,
-      &:focus {
-        text-shadow: ${({ theme }) => theme.textShadow};
-        color: ${({ theme }) => theme.textLight};
-        outline: none;
-      }
-    }
-  }
-  @media ${({ theme }) => {
-      return theme.breakpoints.md;
-    }} {
-    display: ${(props) => (props.active ? "flex" : "none")};
-    // display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.95);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-`;
-
-const HamburgerStyled = styled.div`
-  width: 3.8rem;
-  height: 3.8rem;
-  cursor: pointer;
- 
-  border-radius: ${({ theme }) => theme.borderRadius};
-  
-  background-color: black;
-  border: ${(props) => (props.active ? "1px solid #48dbfb;" : "none")}
-  box-shadow: ${(props) =>
-    props.active
-      ? `rgb(255 255 255) 0px 0px 1px,
-    rgb(255 255 255) 0px 0px 2px,
-    rgb(255 255 255) 0px 0px 2px,
-    rgb(72 219 251) 0px 0px 2px,
-    rgb(72 219 251) 0px 0px 3px,
-    rgb(72 219 251) 0px 0px 5px,
-    rgb(72 219 251) 0px 0px 7px;`
-      : null}
-
-  transition: all 600ms ease-in-out;
-  display: none;
-  @media ${({ theme }) => {
-    return theme.breakpoints.md;
-  }} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    right: 1rem;
-    z-index: 1;
-  }
-`;
-
-const BarStyled = styled.div`
-  height: 3px;
-  width: 85%;
-  background-color: ${(props) => (props.active ? "transparent" : " #fff")};
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
-  transition: all 300ms ease-in-out;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 85%;
-
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
-    transition: all 500ms ease-in-out;
-    background-color: ${(props) => (props.active ? "#48dbfb;" : "#fafafa")};
-  }
-  &::before {
-    // transform: translateY(-16px);
-    transform: ${(props) =>
-      props.active ? "translate(0, 0) rotate(45deg);" : "translateY(-10px);"};
-  }
-  &::after {
-    // transform: translateY(16px);
-    transform: ${(props) =>
-      props.active ? "translate(0, 0) rotate(-45deg);" : "translateY(10px);"};
-  }
-`;
-
-const navBarArr = [
-  { title: "About", href: "#about", id: 1 },
-  { title: "Projects", href: "#projects", id: 2 },
-  { title: "Contact", href: "#contact", id: 3 },
-];
+import navBarArr from "../../assets/data/navbarLinksData";
 
 const Navbar = () => {
   const [navIsOpened, setNavIsOpened] = useState(false);
@@ -154,6 +19,14 @@ const Navbar = () => {
     }, 500);
   };
 
+  const generateNavLinks = navBarArr.map((el, index) => {
+    return (
+      <li key={index} onClick={hamburgerMenuClickHandler}>
+        <a href={el.href}>{el.title}</a>
+      </li>
+    );
+  });
+
   return (
     <NavStyled>
       <NavCenterStyled>
@@ -161,15 +34,7 @@ const Navbar = () => {
         <figure>
           <img src={backG} alt="" />
         </figure>
-        <UlStyled active={navIsOpened}>
-          {navBarArr.map((el, index) => {
-            return (
-              <li key={index} onClick={hamburgerMenuClickHandler}>
-                <a href={el.href}>{el.title}</a>
-              </li>
-            );
-          })}
-        </UlStyled>
+        <UlStyled active={navIsOpened}>{generateNavLinks}</UlStyled>
         <HamburgerStyled
           onClick={hamburgerMenuClickHandler}
           active={navIsOpened}

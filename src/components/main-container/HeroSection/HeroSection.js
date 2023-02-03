@@ -11,7 +11,7 @@ import {
 } from "../../styles/HeroStyles/HeroStyles";
 
 import { ImGithub, ImInstagram, ImLinkedin, ImArrowDown } from "react-icons/im";
-import AnimatedHeroBacground from "../../../4NB4.gif";
+import AnimatedHeroBacground from "../../../imgs/4NB4.gif";
 import { useState } from "react";
 import { useEffect } from "react";
 

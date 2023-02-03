@@ -9,8 +9,8 @@ import {
   AnimatedBackgroundCenterStyled,
 } from "../../styles/AboutStyles/AboutStyles";
 
-import AnimatedBottom from "../../../2Mul.gif";
-import AnimatedCenter from "../../../LCPT.gif";
+import AnimatedBottom from "../../../imgs/2Mul.gif";
+import AnimatedCenter from "../../../imgs/LCPT.gif";
 
 import {
   DiSass,
@@ -22,6 +22,8 @@ import {
   DiBootstrap,
   DiGitBranch,
 } from "react-icons/di";
+
+import portfolioImage from "../../../imgs/20190227_215526.jpg";
 
 const textArr = [
   `My name is Stefan Kostic and I am a 34 year old who 
@@ -53,27 +55,23 @@ const iconsArr = [
 ];
 
 const AboutSection = () => {
+  const generateParagraphs = textArr.map((el, index) => (
+    <ParagraphStyled key={index}>{el}</ParagraphStyled>
+  ));
+  const generateIcons = iconsArr.map((el, index) => <li key={index}>{el}</li>);
+
   return (
     <SectionAboutStyled id="about">
       <AboutContainerStyled>
         <PortfolioImageStyled>
-          <img
-            src="https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
+          <img src={portfolioImage} alt="portfolio-img" />
         </PortfolioImageStyled>
         <article>
           <div>
             <AboutHeading>About me...</AboutHeading>
-            {textArr.map((el, index) => (
-              <ParagraphStyled key={index}>{el}</ParagraphStyled>
-            ))}
+            {generateParagraphs}
           </div>
-          <ListStyled>
-            {iconsArr.map((el, index) => (
-              <li key={index}>{el}</li>
-            ))}
-          </ListStyled>
+          <ListStyled>{generateIcons}</ListStyled>
         </article>
         <AnimatedBackgroundBottomLeftStyled>
           <img src={AnimatedBottom} alt="" />

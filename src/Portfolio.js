@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState, useReducer } from "react";
 // import { createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Theme.js";
@@ -9,10 +9,47 @@ import MainContainer from "./components/main-container/MainContainer.js";
 import ProjectCardModal from "./components/modal/ProjectCardModal.js";
 
 import CardContext from "./store/card-context.js";
+import IntersectionObj from "./store/intersecting-context.js";
 
 import projects from "./assets/data/projectListData.js";
 
 const Portfolio = () => {
+  const initState = {
+    contact: false,
+    project: false,
+    about: false,
+  };
+
+  const intersectionReducer = (state, action) => {
+    if (action.type === "contact") {
+      return {
+        contact: true,
+        project: false,
+        about: false,
+      };
+    }
+    if (action.type === "projects") {
+      return {
+        contact: false,
+        project: true,
+        about: false,
+      };
+    }
+    if (action.type === "about") {
+      return {
+        contact: false,
+        project: false,
+        about: true,
+      };
+    }
+    return initState;
+  };
+
+  const [intersectionState, dispatchIntersectionState] = useReducer(
+    intersectionReducer,
+    initState
+  );
+
   const [modalIsShown, setModalIsShown] = useState(false);
   const [modalInfo, setModalInfo] = useState({
     img: "",
@@ -21,6 +58,37 @@ const Portfolio = () => {
     sourceCode: "",
     liveVersion: "",
   });
+
+  // const [aboutSectionIsIntersecting, setAboutSectionIsIntersecting] =
+  //   useState(false);
+  // const [projectSectionIsIntersecting, setProjectSectionIsIntersecting] =
+  //   useState(false);
+  // const [contactSectionIsIntersecting, setContactSectionIsIntersecting] =
+  //   useState(false);
+
+  const refIntersection = function (curINput, threshHoldVal) {
+    const options = {
+      root: null,
+      rootMargin: "150px",
+      threshold: threshHoldVal,
+    };
+
+    const observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach((entry) => {
+        // console.log(entry.target.id);
+        if (entry.isIntersecting) {
+          if (entry.target.id === "contact")
+            dispatchIntersectionState({ type: "contact" });
+          if (entry.target.id === "projects")
+            dispatchIntersectionState({ type: "projects" });
+          if (entry.target.id === "about")
+            dispatchIntersectionState({ type: "about" });
+        }
+      });
+    }, options);
+
+    observer.observe(curINput);
+  };
 
   const showModal = function () {
     setModalIsShown((prevState) => !prevState);
@@ -37,15 +105,29 @@ const Portfolio = () => {
     info: modalInfo,
   };
 
+  const generateContactIntersecting = (conSection) => {};
+
+  useEffect(() => {
+    console.log("changed");
+  }, [intersectionState]);
+
   return (
     <ThemeProvider theme={theme}>
       <>
-        <CardContext.Provider value={projectsAndModalContext}>
-          <GlobalStyles />
-          {modalIsShown && <ProjectCardModal />}
-          <Navbar />
-          <MainContainer />
-        </CardContext.Provider>
+        <IntersectionObj.Provider
+          value={{
+            contactIsInterSecting: generateContactIntersecting,
+            intersectionObj: intersectionState,
+            getElement: refIntersection,
+          }}
+        >
+          <CardContext.Provider value={projectsAndModalContext}>
+            <GlobalStyles />
+            {modalIsShown && <ProjectCardModal />}
+            <Navbar />
+            <MainContainer />
+          </CardContext.Provider>
+        </IntersectionObj.Provider>
       </>
     </ThemeProvider>
   );

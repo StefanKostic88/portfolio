@@ -184,8 +184,8 @@ const ContactSection = React.forwardRef((props, ref) => {
 
   // let nameInputIsValid = false;
 
-  const ctx = useContext(intersectionObj);
-  console.log(ctx);
+  // const ctx = useContext(intersectionObj);
+  // console.log(ctx);
 
   const nameInputChangeHandler = (e) => {
     if (e.target.value.trim() === "") {
@@ -278,7 +278,7 @@ const ContactSection = React.forwardRef((props, ref) => {
       console.log(nameInputValue, emailInputValue, messageInputValue);
     }
   };
-
+  // console.log(ref);
   return (
     <SectionStyled id="contact" ref={ref}>
       <div>

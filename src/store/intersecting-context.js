@@ -1,8 +1,9 @@
 import React from "react";
 
-const intersectionObj = React.createContext({
+const IntersectionObj = React.createContext({
   sectionIsIntersecting: false,
-  obj: { title: "" },
+  intersectionObj: { contact: false, project: false, about: false },
+  getElement: () => {},
 });
 
-export default intersectionObj;
+export default IntersectionObj;

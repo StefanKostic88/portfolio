@@ -22,6 +22,15 @@ export const theme = {
   rgb(72 219 251) 0px 0px 9px,
   rgb(72 219 251) 0px 0px 10px,
   rgb(72 219 251) 0px 0px 22px;`,
+
+  boxShadowLinks: `rgb(72 219 251) 0px 0px 1px,
+  rgb(72 219 251) 0px 0px 2px,
+  rgb(72 219 251) 0px 0px 3px,
+  rgb(72 219 251) 0px 0px 6px,
+  rgb(255 255 255) 0px 0px 3px,
+  rgb(255 255 255) 0px 0px 3px,
+  rgb(255 255 255) 0px 0px 1px,`,
+
   border: `1px solid #48dbfb`,
   borderRadius: "3px",
   breakpoints: {

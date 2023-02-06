@@ -7,7 +7,8 @@ export const SectionHeroStyled = styled.div`
   align-items: flex-start;
   max-width: 104rem;
   width: 100%;
-  min-height: calc(95vh - 4.8rem);
+  // min-height: calc(95vh - 4.8rem);
+  min-height: 100vh;
   color: ${({ theme }) => theme.textLight};
   padding: 10rem 3rem 1.5rem;
   @media ${({ theme }) => theme.breakpoints.lg} {

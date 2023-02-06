@@ -18,6 +18,7 @@ const Portfolio = () => {
     contact: false,
     project: false,
     about: false,
+    heroIsVisible: true,
   };
 
   const intersectionReducer = (state, action) => {
@@ -26,6 +27,7 @@ const Portfolio = () => {
         contact: true,
         project: false,
         about: false,
+        heroIsVisible: false,
       };
     }
     if (action.type === "projects") {
@@ -33,6 +35,7 @@ const Portfolio = () => {
         contact: false,
         project: true,
         about: false,
+        heroIsVisible: false,
       };
     }
     if (action.type === "about") {
@@ -40,8 +43,18 @@ const Portfolio = () => {
         contact: false,
         project: false,
         about: true,
+        heroIsVisible: false,
       };
     }
+    if (action.type === "hero") {
+      return {
+        contact: false,
+        project: false,
+        about: false,
+        heroIsVisible: true,
+      };
+    }
+
     return initState;
   };
 
@@ -83,6 +96,8 @@ const Portfolio = () => {
             dispatchIntersectionState({ type: "projects" });
           if (entry.target.id === "about")
             dispatchIntersectionState({ type: "about" });
+          if (entry.target.id === "hero")
+            dispatchIntersectionState({ type: "hero" });
         }
       });
     }, options);
@@ -108,7 +123,7 @@ const Portfolio = () => {
   const generateContactIntersecting = (conSection) => {};
 
   useEffect(() => {
-    console.log("changed");
+    // console.log("changed");
   }, [intersectionState]);
 
   return (

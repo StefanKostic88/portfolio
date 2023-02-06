@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const NavStyled = styled.nav`
+  // position: ${(props) => (props.active ? "absolute" : "fixed")};
   position: fixed;
   width: 100%;
-  z-index: 100;
-  background-color: black;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   min-height: 4.8rem;
@@ -36,139 +37,7 @@ export const NavCenterStyled = styled.div`
 export const UlStyled = styled.ul`
   display: flex;
   gap: 1rem;
-  li {
-    padding: 1rem 1.6rem;
-    position: relative;
-    a {
-      color: ${({ theme }) => theme.textColor.dark};
-      font-weight: 500;
-      text-decoration: none;
-      letter-spacing: 2px;
-      cursor: pointer;
-      &:link,
-      &:active {
-        font-size: 2.4rem;
-        text-transform: uppercase;
-        color: ${({ theme }) => theme.textLight};
-      }
-      &:hover,
-      &:focus {
-        text-shadow: ${({ theme }) => theme.textShadow};
-        color: ${({ theme }) => theme.textLight};
-        outline: none;
-      }
-    }
-    span:nth-child(1) {
-      position: absolute;
-      top: -1px;
-      right: 0;
-      height: 2px;
-      width: 100%;
-      background-color: ${({ theme }) => theme.color.primary};
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-    }
 
-    &:hover span:nth-child(1),
-    &:focus span:nth-child(1) {
-      top: -1px;
-      right: 0;
-      height: 2px;
-      width: 100%;
-      transform: scaleX(1);
-      transform-origin: right;
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-    }
-
-    span:nth-child(2) {
-      position: absolute;
-      top: 0;
-      right: -1px;
-      height: 100%;
-      width: 2px;
-      transform-origin: right;
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleY(0);
-      // transform-origin: top center;
-      transform-origin: center bottom;
-      transition: transform 200ms linear;
-    }
-    &:hover span:nth-child(2),
-    &:focus span:nth-child(2) {
-      position: absolute;
-      top: 0;
-      right: -1px;
-      height: 100%;
-      width: 2px;
-      transform-origin: right;
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleY(1);
-      // transform-origin: center bottom;
-      transform-origin: top center;
-    }
-    span:nth-child(3) {
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      height: 2px;
-      width: 100%;
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 200ms linear;
-    }
-    &:hover span:nth-child(3),
-    &:focus span:nth-child(3) {
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      height: 2px;
-      width: 100%;
-
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleX(1);
-      transform-origin: left;
-      transition: transform 200ms linear;
-    }
-    span:nth-child(4) {
-      position: absolute;
-      left: -1px;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 200ms linear;
-    }
-    &:hover span:nth-child(4),
-    &:focus span:nth-child(4) {
-      position: absolute;
-      left: -1px;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background-color: ${({ theme }) => theme.color.primary};
-      transition: transform 200ms linear;
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      transform: scaleY(1);
-      transform-origin: bottom;
-      transition: transform 200ms linear;
-    }
-  }
   @media ${({ theme }) => {
       return theme.breakpoints.md;
     }} {
@@ -252,3 +121,138 @@ export const BarStyled = styled.div`
       props.active ? "translate(0, 0) rotate(-45deg);" : "translateY(10px);"};
   }
 `;
+
+// span:nth-child(1) {
+//   position: absolute;
+//   top: -1px;
+//   right: 0;
+//   height: 2px;
+//   width: 100%;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transform: scaleX(0);
+//   transform-origin: left;
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+// }
+
+// &:hover span:nth-child(1),
+// &:focus span:nth-child(1) {
+//   top: -1px;
+//   right: 0;
+//   height: 2px;
+//   width: 100%;
+//   transform: scaleX(1);
+//   transform-origin: right;
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+// }
+
+// span:nth-child(2) {
+//   position: absolute;
+//   top: 0;
+//   right: -1px;
+//   height: 100%;
+//   width: 2px;
+//   transform-origin: right;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleY(0);
+//   // transform-origin: top center;
+//   transform-origin: center bottom;
+//   transition: transform 200ms linear;
+// }
+// &:hover span:nth-child(2),
+// &:focus span:nth-child(2) {
+//   position: absolute;
+//   top: 0;
+//   right: -1px;
+//   height: 100%;
+//   width: 2px;
+//   transform-origin: right;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleY(1);
+//   // transform-origin: center bottom;
+//   transform-origin: top center;
+// }
+// span:nth-child(3) {
+//   position: absolute;
+//   left: 0;
+//   bottom: -1px;
+//   height: 2px;
+//   width: 100%;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleX(0);
+//   transform-origin: right;
+//   transition: transform 200ms linear;
+// }
+// &:hover span:nth-child(3),
+// &:focus span:nth-child(3) {
+//   position: absolute;
+//   left: 0;
+//   bottom: -1px;
+//   height: 2px;
+//   width: 100%;
+
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleX(1);
+//   transform-origin: left;
+//   transition: transform 200ms linear;
+// }
+// span:nth-child(4) {
+//   position: absolute;
+//   left: -1px;
+//   top: 0;
+//   height: 100%;
+//   width: 2px;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleY(0);
+//   transform-origin: top;
+//   transition: transform 200ms linear;
+// }
+// &:hover span:nth-child(4),
+// &:focus span:nth-child(4) {
+//   position: absolute;
+//   left: -1px;
+//   top: 0;
+//   height: 100%;
+//   width: 2px;
+//   background-color: ${({ theme }) => theme.color.primary};
+//   transition: transform 200ms linear;
+//   box-shadow: ${({ theme }) => theme.boxShadow};
+//   transform: scaleY(1);
+//   transform-origin: bottom;
+//   transition: transform 200ms linear;
+// }
+
+// li {
+//   padding: 1rem 1.6rem;
+//   position: relative;
+//   a {
+//     color: ${({ theme }) => theme.textColor.dark};
+//     font-weight: 500;
+//     text-decoration: none;
+//     letter-spacing: 2px;
+//     cursor: pointer;
+//     &:link,
+//     &:active {
+//       font-size: 2.4rem;
+//       text-transform: uppercase;
+//       color: ${({ theme }) => theme.textLight};
+//     }
+//     &:hover,
+//     &:focus {
+//       text-shadow: ${({ theme }) => theme.textShadow};
+//       color: ${({ theme }) => theme.textLight};
+//       outline: none;
+//     }
+//   }
+// }

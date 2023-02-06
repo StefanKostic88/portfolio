@@ -6,6 +6,7 @@ const IntersectionObj = React.createContext({
     contact: false,
     project: false,
     about: false,
+    heroIsVisible: true,
   },
   getElement: () => {},
 });

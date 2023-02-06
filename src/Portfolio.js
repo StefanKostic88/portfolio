@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useReducer } from "react";
+import { useState, useReducer } from "react";
 // import { createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./Theme.js";
@@ -72,13 +72,6 @@ const Portfolio = () => {
     liveVersion: "",
   });
 
-  // const [aboutSectionIsIntersecting, setAboutSectionIsIntersecting] =
-  //   useState(false);
-  // const [projectSectionIsIntersecting, setProjectSectionIsIntersecting] =
-  //   useState(false);
-  // const [contactSectionIsIntersecting, setContactSectionIsIntersecting] =
-  //   useState(false);
-
   const refIntersection = function (curINput, threshHoldVal) {
     const options = {
       root: null,
@@ -88,7 +81,6 @@ const Portfolio = () => {
 
     const observer = new IntersectionObserver(function (entries, observer) {
       entries.forEach((entry) => {
-        // console.log(entry.target.id);
         if (entry.isIntersecting) {
           if (entry.target.id === "contact")
             dispatchIntersectionState({ type: "contact" });
@@ -121,10 +113,6 @@ const Portfolio = () => {
   };
 
   const generateContactIntersecting = (conSection) => {};
-
-  useEffect(() => {
-    // console.log("changed");
-  }, [intersectionState]);
 
   return (
     <ThemeProvider theme={theme}>

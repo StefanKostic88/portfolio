@@ -19,7 +19,7 @@ const ProjectCardDetialsStyled = styled.article`
   align-items: center;
   justify-content: space-between;
   box-shadow: ${({ theme }) => theme.boxShadow};
-  z-index: 10;
+  z-index: 15;
 `;
 
 const ProjectCardTitleStyled = styled.h4`

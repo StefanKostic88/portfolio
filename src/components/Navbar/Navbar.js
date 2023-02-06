@@ -141,7 +141,6 @@ const Navbar = () => {
       </LIstStyled>
     );
   });
-  console.log(ctx.intersectionObj.heroIsVisible);
 
   return (
     <NavStyled>

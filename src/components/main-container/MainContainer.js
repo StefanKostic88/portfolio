@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext, useState } from "react";
+import { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
 import HeroSection from "./HeroSection/HeroSection";
 import AboutSection from "./AboutSection/AboutSection";
@@ -14,24 +14,22 @@ const WraperStyled = styled.div`
 `;
 
 const MainContainer = () => {
-  const contentWraperRef = useRef();
   const heroRef = useRef();
   const aboutRef = useRef();
   const projectsRef = useRef();
   const contactRef = useRef();
 
   const intersectionContext = useContext(IntersectionObj);
-  console.log();
 
   useEffect(() => {
     intersectionContext.getElement(heroRef.current, 1);
     intersectionContext.getElement(aboutRef.current, 1);
     intersectionContext.getElement(projectsRef.current, 1);
     intersectionContext.getElement(contactRef.current, 1);
-  }, []);
+  }, [intersectionContext]);
 
   return (
-    <WraperStyled ref={contentWraperRef}>
+    <WraperStyled>
       <HeroSection ref={heroRef} />
       <AboutSection ref={aboutRef} />
       <ProjectsSection ref={projectsRef} />

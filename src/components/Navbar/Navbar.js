@@ -2,6 +2,7 @@
 import { useContext, useState, useEffect } from "react";
 // import { Link, animateScroll } from "react-scroll";
 import IntersectionObj from "../../store/intersecting-context";
+import Logo from "./Logo";
 import {
   NavStyled,
   NavCenterStyled,
@@ -11,8 +12,6 @@ import {
   HamburgerStyled,
   BarStyled,
 } from "../styles/NavbarStyles/NavbarStyles";
-import backG from "../../assets/imgs/7t4e.gif";
-
 import navBarArr from "../../assets/data/navbarLinksData";
 
 const Navbar = () => {
@@ -74,12 +73,8 @@ const Navbar = () => {
   return (
     <NavStyled>
       <NavCenterStyled>
-        {/* <Logo /> */}
-        <figure>
-          <img src={backG} alt="" />
-        </figure>
+        <Logo />
         <UlStyled active={navIsOpened}>{generateNavLinks}</UlStyled>
-
         <HamburgerStyled
           onClick={hamburgerMenuClickHandler}
           active={navIsOpened}

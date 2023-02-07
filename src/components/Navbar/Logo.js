@@ -1,13 +1,20 @@
 import styled from "styled-components";
+import logoImage from "../../assets/imgs/7t4e.gif";
 
 const LogoContainerStyled = styled.div`
-  width: 2rem;
-  height: 2rem;
-  background-color: red;
+  width: 6rem;
+  object-fit: cover;
+  img {
+    width: 100%;
+  }
 `;
 
 const Logo = () => {
-  return <LogoContainerStyled></LogoContainerStyled>;
+  return (
+    <LogoContainerStyled>
+      <img src={logoImage} alt="logo" />
+    </LogoContainerStyled>
+  );
 };
 
 export default Logo;

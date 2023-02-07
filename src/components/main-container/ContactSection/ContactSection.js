@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import useFormInput from "../../../hooks/useFormInput";
 import styled from "styled-components";
 
 import BackDrop from "../../modal/BackDrop";
@@ -259,98 +260,68 @@ const ContactTextAreaStyled = styled.textarea`
 // console.log(ContactFormStyled); dodaj error prop
 
 const ContactSection = React.forwardRef((props, ref) => {
-  const [nameInputValue, setNameInputValue] = useState("");
-  const [nameInputIsValid, setNameInputIsValid] = useState(true);
-  const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
-
-  const [emailInputValue, setEmailInputValue] = useState("");
-  const [emailInputIsValid, setEmailInputIsValid] = useState(true);
-  const [emailInputIsTouched, SetEmailInputIsTouched] = useState(false);
-
-  const [messageInputValue, setMessageInputValue] = useState("");
-  const [messageInputIsValid, setMessageInputIsValid] = useState(true);
-  const [messageInputIsTouched, setMessageInputIsTouched] = useState(false);
+  // const [messageInputValue, setMessageInputValue] = useState("");
+  // const [messageInputIsValid, setMessageInputIsValid] = useState(true);
+  // const [messageInputIsTouched, setMessageInputIsTouched] = useState(false);
 
   const [formIsNotValid, setFormIsNotValid] = useState(true);
 
   const [formAlert, setFormAlert] = useState(false);
 
-  // let nameInputIsValid = false;
+  const {
+    inputValue: nameInputValue,
+    inputIsValid: nameInputIsValid,
+    inputIsTouched: nameInputIsTouched,
+    inputChangeHandler: nameInputChangeHandler,
+    inputFocusHandler: nameInputFocusHandler,
+    inputBlurHandler: nameInputBlurHandler,
+    resetInputState: resetNameInputState,
+  } = useFormInput((value) => value.trim() === "");
 
-  // const ctx = useContext(intersectionObj);
-  // console.log(ctx);
+  const {
+    inputValue: emailInputValue,
+    inputIsValid: emailInputIsValid,
+    inputIsTouched: emailInputIsTouched,
+    inputChangeHandler: emailInputChangeHandler,
+    inputFocusHandler: emailInputFocusHandler,
+    inputBlurHandler: emailInputBlurHandler,
+    resetInputState: resetEmailInputState,
+  } = useFormInput(
+    (value, email) => value.trim() === "" || !value.includes("@")
+  );
 
-  const nameInputChangeHandler = (e) => {
-    setNameInputValue(e.target.value);
-    if (e.target.value.trim() === "" && nameInputIsTouched) {
-      console.log("not valid second");
-      setNameInputIsValid(false);
-      return;
-    } else {
-      setNameInputIsValid(true);
-    }
-  };
-
-  const nameInputFocusHandler = () => {
-    setNameInputIsTouched(true);
-  };
-
-  const nameInputBlurHandler = () => {
-    if (nameInputIsTouched && nameInputValue.trim() === "") {
-      // console.log("blur: not valid");
-      setNameInputIsValid(false);
-      return;
-    }
-  };
-
-  const emailInputChangeHandler = (e) => {
-    setEmailInputValue(e.target.value);
-    if (e.target.value === "" || !e.target.value.includes("@")) {
-      setEmailInputIsValid(false);
-      return;
-    } else {
-      setEmailInputIsValid(true);
-    }
-  };
-
-  const emailInputFocusHandler = () => {
-    SetEmailInputIsTouched(true);
-  };
-  // !emailInputIsValid
-  const emailInputBlurHandler = () => {
-    if (
-      (emailInputIsTouched && emailInputValue.trim() === "") ||
-      !emailInputValue.includes("@")
-    ) {
-      setEmailInputIsValid(false);
-      return;
-    }
-  };
-
-  //
+  const {
+    inputValue: messageInputValue,
+    inputIsValid: messageInputIsValid,
+    inputIsTouched: messageInputIsTouched,
+    inputChangeHandler: messageInputChangeHandler,
+    inputFocusHandler: messageInputFocusHandler,
+    inputBlurHandler: messageInputBlurHandler,
+    resetInputState: reserMessageInputState,
+  } = useFormInput((value) => value.trim() === "");
 
   ////
-  const messageInputChangeHandler = (e) => {
-    setMessageInputValue(e.target.value);
+  // const messageInputChangeHandler = (e) => {
+  //   setMessageInputValue(e.target.value);
 
-    if (e.target.value.trim() === "") {
-      console.log("notValid");
-      setMessageInputIsValid(false);
-    } else {
-      setMessageInputIsValid(true);
-    }
-  };
+  //   if (e.target.value.trim() === "") {
+  //     console.log("notValid");
+  //     setMessageInputIsValid(false);
+  //   } else {
+  //     setMessageInputIsValid(true);
+  //   }
+  // };
 
-  const messageInputFocusHandler = () => {
-    setMessageInputIsTouched(true);
-  };
+  // const messageInputFocusHandler = () => {
+  //   setMessageInputIsTouched(true);
+  // };
 
-  const messageInputBlurHandler = () => {
-    if (messageInputValue.trim() === "" && messageInputIsTouched) {
-      setMessageInputIsValid(false);
-      return;
-    }
-  };
+  // const messageInputBlurHandler = () => {
+  //   if (messageInputValue.trim() === "" && messageInputIsTouched) {
+  //     setMessageInputIsValid(false);
+  //     return;
+  //   }
+  // };
 
   // console.log(messageInputIsValid);
 
@@ -362,22 +333,22 @@ const ContactSection = React.forwardRef((props, ref) => {
     messageInputIsValid &&
     messageInputIsTouched &&
     messageInputValue.trim() !== "";
-
-  const resetNameInputState = () => {
-    setNameInputValue("");
-    setNameInputIsValid(true);
-    setNameInputIsTouched(false);
-  };
-  const resetEmailInputState = () => {
-    setEmailInputValue("");
-    setEmailInputIsValid(true);
-    SetEmailInputIsTouched(false);
-  };
-  const reserMessageInputState = () => {
-    setMessageInputValue("");
-    setMessageInputIsValid(true);
-    setMessageInputIsTouched(false);
-  };
+  // console.log(nameInputTouchedAndValid);
+  // const resetNameInputState = () => {
+  //   setNameInputValue("");
+  //   setNameInputIsValid(true);
+  //   setNameInputIsTouched(false);
+  // };
+  // const resetEmailInputState = () => {
+  //   setEmailInputValue("");
+  //   setEmailInputIsValid(true);
+  //   SetEmailInputIsTouched(false);
+  // };
+  // const reserMessageInputState = () => {
+  //   setMessageInputValue("");
+  //   setMessageInputIsValid(true);
+  //   setMessageInputIsTouched(false);
+  // };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -390,28 +361,32 @@ const ContactSection = React.forwardRef((props, ref) => {
     }
   };
 
-  useEffect(() => {
-    if (
-      nameInputTouchedAndValid &&
-      emailInputTouchedAndValid &&
-      messageInputTouchedAndValid
-    ) {
-      setFormIsNotValid(false);
-    } else {
-      setFormIsNotValid(true);
-    }
+  useEffect(
+    () => {
+      if (
+        nameInputTouchedAndValid &&
+        emailInputTouchedAndValid &&
+        messageInputTouchedAndValid
+      ) {
+        setFormIsNotValid(false);
+      } else {
+        setFormIsNotValid(true);
+      }
 
-    if (formAlert) {
-      setFormIsNotValid(true);
-      setTimeout(() => {
-        setFormAlert(false);
-      }, 3000);
-    }
-  }, [
-    nameInputTouchedAndValid,
-    emailInputTouchedAndValid,
-    messageInputTouchedAndValid,
-  ]);
+      if (formAlert) {
+        setFormIsNotValid(true);
+        setTimeout(() => {
+          setFormAlert(false);
+        }, 3000);
+      }
+    },
+    [
+      // nameInputValue,
+      // nameInputTouchedAndValid,
+      // emailInputTouchedAndValid,
+      // messageInputTouchedAndValid,
+    ]
+  );
 
   return (
     <SectionStyled id="contact" ref={ref}>
@@ -506,3 +481,63 @@ const ContactSection = React.forwardRef((props, ref) => {
 });
 
 export default ContactSection;
+
+// const [nameInputValue, setNameInputValue] = useState("");
+// const [nameInputIsValid, setNameInputIsValid] = useState(true);
+// const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
+
+// const [emailInputValue, setEmailInputValue] = useState("");
+// const [emailInputIsValid, setEmailInputIsValid] = useState(true);
+// const [emailInputIsTouched, SetEmailInputIsTouched] = useState(false);
+
+// const nameInputChangeHandler = (e) => {
+//   setNameInputValue(e.target.value);
+//   if (e.target.value.trim() === "" && nameInputIsTouched) {
+//     console.log("not valid second");
+//     setNameInputIsValid(false);
+//     return;
+//   } else {
+//     setNameInputIsValid(true);
+//   }
+// };
+
+// const nameInputFocusHandler = () => {
+//   setNameInputIsTouched(true);
+// };
+
+// const nameInputBlurHandler = () => {
+//   if (nameInputIsTouched && nameInputValue.trim() === "") {
+//     // console.log("blur: not valid");
+//     setNameInputIsValid(false);
+//     return;
+//   }
+// };
+
+// const emailInputChangeHandler = (e) => {
+//   setEmailInputValue(e.target.value);
+//   if (
+//     e.target.value === "" ||
+//     (!e.target.value.includes("@") && emailInputIsTouched)
+//   ) {
+//     setEmailInputIsValid(false);
+//     return;
+//   } else {
+//     setEmailInputIsValid(true);
+//   }
+// };
+
+// const emailInputFocusHandler = () => {
+//   SetEmailInputIsTouched(true);
+// };
+// // !emailInputIsValid
+// const emailInputBlurHandler = () => {
+//   if (
+//     (emailInputIsTouched && emailInputValue.trim() === "") ||
+//     !emailInputValue.includes("@")
+//   ) {
+//     setEmailInputIsValid(false);
+//     return;
+//   }
+// };
+
+//

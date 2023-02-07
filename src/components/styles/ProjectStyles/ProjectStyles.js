@@ -38,7 +38,6 @@ export const SectionProjectStyled = styled.div`
 export const ProjectCardStyled = styled.figure`
 position: relative;
   border-radius: ${({ theme }) => theme.borderRadius};
-  // overflow: hidden;
   box-shadow: ${({ theme }) => theme.boxShadow};
   border: ${({ theme }) => theme.border};
   width: 33rem;

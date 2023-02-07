@@ -8,7 +8,7 @@ export const theme = {
     dark: "#bdbdbd",
   },
   textShadow: "0 0 1px #fff, 0 0 3px #fff, 0 0 3px #fff",
-  boxShadow: ` rgb(255 255 255) 0px 0px 1px,
+  boxShadow: `rgb(255 255 255) 0px 0px 1px,
   rgb(255 255 255) 0px 0px 2px,
   rgb(255 255 255) 0px 0px 2px,
   rgb(72 219 251) 0px 0px 2px,

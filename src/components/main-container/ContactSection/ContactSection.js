@@ -60,40 +60,6 @@ const ContactFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   width: 95%;
-
-  input {
-    font-family: Orbitron, sans-serif;
-    font-size: 1.6rem;
-    padding: 0.8rem;
-    border: ${({ theme }) => theme.border};
-    margin-bottom: 1.6rem;
-    background-color: black;
-    color: ${({ theme }) => theme.color.primary};
-    border-radius: ${({ theme }) => theme.borderRadius};
-    cursor: pointer;
-    transition: all 300ms;
-    &:focus {
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      outline: none;
-    }
-  }
-  textarea {
-    font-family: Orbitron, sans-serif;
-    resize: none;
-    font-size: 1.6rem;
-    padding: 0.8rem;
-    border: ${({ theme }) => theme.border};
-    margin-bottom: 3.2rem;
-    background-color: black;
-    color: ${({ theme }) => theme.color.primary};
-    border-radius: ${({ theme }) => theme.borderRadius};
-    cursor: pointer;
-    transition: all 300ms;
-    &:focus {
-      box-shadow: ${({ theme }) => theme.boxShadow};
-      outline: none;
-    }
-  }
 `;
 
 const ContactHeadingPrimaryStyled = styled.h2`
@@ -227,19 +193,82 @@ const SubmitInfoParagraphStyled = styled.p`
   margin-top: 18rem;
 `;
 
+// `1px solid #48dbfb`
+
+const ContactInputStyled = styled.input`
+  font-family: Orbitron, sans-serif;
+  font-size: 1.6rem;
+  padding: 0.8rem;
+  // border: ${({ theme }) => theme.border};
+
+  margin-bottom: 1.6rem;
+  background-color: black;
+  color: ${({ theme }) => theme.color.primary};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  cursor: pointer;
+  transition: all 300ms;
+  // box-shadow: ${(props) =>
+    props.inputIsValid ? null : "0 0 0 3px #762020"};
+  border: ${(props) =>
+    props.inputIsValid ? "1px solid #48dbfb" : "1px solid #762020"};
+  &:focus {
+    // box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: ${(props) =>
+      props.inputIsValid
+        ? `rgb(255 255 255) 0px 0px 1px,
+      rgb(255 255 255) 0px 0px 2px,
+      rgb(255 255 255) 0px 0px 2px,
+      rgb(72 219 251) 0px 0px 2px,
+      rgb(72 219 251) 0px 0px 3px,
+      rgb(72 219 251) 0px 0px 5px,
+      rgb(72 219 251) 0px 0px 15px`
+        : "0 0 0 1px #762020"};
+    outline: none;
+  }
+`;
+
+const ContactTextAreaStyled = styled.textarea`
+  font-family: Orbitron, sans-serif;
+  resize: none;
+  font-size: 1.6rem;
+  padding: 0.8rem;
+  border: ${(props) =>
+    props.inputIsValid ? "1px solid #48dbfb" : "1px solid #762020"};
+  margin-bottom: 3.2rem;
+  background-color: black;
+  color: ${({ theme }) => theme.color.primary};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  cursor: pointer;
+  transition: all 300ms;
+  &:focus {
+    // box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: ${(props) =>
+      props.inputIsValid
+        ? `rgb(255 255 255) 0px 0px 1px,
+      rgb(255 255 255) 0px 0px 2px,
+      rgb(255 255 255) 0px 0px 2px,
+      rgb(72 219 251) 0px 0px 2px,
+      rgb(72 219 251) 0px 0px 3px,
+      rgb(72 219 251) 0px 0px 5px,
+      rgb(72 219 251) 0px 0px 15px`
+        : "0 0 0 1px #762020"};
+    outline: none;
+  }
+`;
+
 // console.log(ContactFormStyled); dodaj error prop
 
 const ContactSection = React.forwardRef((props, ref) => {
   const [nameInputValue, setNameInputValue] = useState("");
-  const [nameInputIsValid, setNameInputIsValid] = useState(false);
+  const [nameInputIsValid, setNameInputIsValid] = useState(true);
   const [nameInputIsTouched, setNameInputIsTouched] = useState(false);
 
   const [emailInputValue, setEmailInputValue] = useState("");
-  const [emailInputIsValid, setEmailInputIsValid] = useState(false);
+  const [emailInputIsValid, setEmailInputIsValid] = useState(true);
   const [emailInputIsTouched, SetEmailInputIsTouched] = useState(false);
 
   const [messageInputValue, setMessageInputValue] = useState("");
-  const [messageInputIsValid, setMessageInputIsValid] = useState(false);
+  const [messageInputIsValid, setMessageInputIsValid] = useState(true);
   const [messageInputIsTouched, setMessageInputIsTouched] = useState(false);
 
   const [formIsNotValid, setFormIsNotValid] = useState(true);
@@ -252,11 +281,12 @@ const ContactSection = React.forwardRef((props, ref) => {
   // console.log(ctx);
 
   const nameInputChangeHandler = (e) => {
-    if (e.target.value.trim() === "") {
+    setNameInputValue(e.target.value);
+    if (e.target.value.trim() === "" && nameInputIsTouched) {
+      console.log("not valid second");
       setNameInputIsValid(false);
       return;
     } else {
-      setNameInputValue(e.target.value);
       setNameInputIsValid(true);
     }
   };
@@ -266,15 +296,14 @@ const ContactSection = React.forwardRef((props, ref) => {
   };
 
   const nameInputBlurHandler = () => {
-    if (nameInputIsTouched && !nameInputIsValid) {
+    if (nameInputIsTouched && nameInputValue.trim() === "") {
       // console.log("blur: not valid");
-      //add error style
+      setNameInputIsValid(false);
       return;
     }
   };
 
   const emailInputChangeHandler = (e) => {
-    e.preventDefault();
     setEmailInputValue(e.target.value);
     if (e.target.value === "" || !e.target.value.includes("@")) {
       setEmailInputIsValid(false);
@@ -287,48 +316,66 @@ const ContactSection = React.forwardRef((props, ref) => {
   const emailInputFocusHandler = () => {
     SetEmailInputIsTouched(true);
   };
-
+  // !emailInputIsValid
   const emailInputBlurHandler = () => {
-    if (emailInputIsTouched && !emailInputIsValid) {
-      // console.log("blur: not valid");
-      //add error style
+    if (
+      (emailInputIsTouched && emailInputValue.trim() === "") ||
+      !emailInputValue.includes("@")
+    ) {
+      setEmailInputIsValid(false);
       return;
     }
   };
 
+  //
+
   ////
   const messageInputChangeHandler = (e) => {
+    setMessageInputValue(e.target.value);
+
     if (e.target.value.trim() === "") {
       console.log("notValid");
       setMessageInputIsValid(false);
     } else {
       setMessageInputIsValid(true);
     }
-    setMessageInputValue(e.target.value);
   };
 
   const messageInputFocusHandler = () => {
     setMessageInputIsTouched(true);
   };
 
-  let nameInputTouchedAndValid = nameInputIsTouched && nameInputIsValid;
-  let emailInputTouchedAndValid = emailInputIsTouched && emailInputIsValid;
+  const messageInputBlurHandler = () => {
+    if (messageInputValue.trim() === "" && messageInputIsTouched) {
+      setMessageInputIsValid(false);
+      return;
+    }
+  };
+
+  // console.log(messageInputIsValid);
+
+  let nameInputTouchedAndValid =
+    nameInputIsTouched && nameInputIsValid && nameInputValue.trim() !== "";
+  let emailInputTouchedAndValid =
+    emailInputIsTouched && emailInputIsValid && emailInputValue.trim() !== "";
   let messageInputTouchedAndValid =
-    messageInputIsValid && messageInputIsTouched;
+    messageInputIsValid &&
+    messageInputIsTouched &&
+    messageInputValue.trim() !== "";
 
   const resetNameInputState = () => {
     setNameInputValue("");
-    setNameInputIsValid(false);
+    setNameInputIsValid(true);
     setNameInputIsTouched(false);
   };
   const resetEmailInputState = () => {
     setEmailInputValue("");
-    setEmailInputIsValid(false);
+    setEmailInputIsValid(true);
     SetEmailInputIsTouched(false);
   };
   const reserMessageInputState = () => {
     setMessageInputValue("");
-    setMessageInputIsValid(false);
+    setMessageInputIsValid(true);
     setMessageInputIsTouched(false);
   };
 
@@ -340,7 +387,6 @@ const ContactSection = React.forwardRef((props, ref) => {
       resetEmailInputState();
       reserMessageInputState();
       setFormAlert(true);
-      // setFormIsNotValid(true);
     }
   };
 
@@ -379,32 +425,40 @@ const ContactSection = React.forwardRef((props, ref) => {
       </div>
       <FormSectionStyled>
         <ContactFormStyled action="" onSubmit={formSubmitHandler}>
-          <input
+          <ContactInputStyled
             value={nameInputValue}
             type="text"
-            placeholder="Name"
+            placeholder={nameInputIsValid ? "Name" : "Name is required"}
+            inputIsValid={nameInputIsValid}
             onChange={nameInputChangeHandler}
             onBlur={nameInputBlurHandler}
             onFocus={nameInputFocusHandler}
           />
-          <input
+          <ContactInputStyled
             value={emailInputValue}
             type="email"
-            placeholder="Email"
+            placeholder={emailInputIsValid ? "Email" : "Email is required"}
+            inputIsValid={emailInputIsValid}
             onChange={emailInputChangeHandler}
             onBlur={emailInputBlurHandler}
             onFocus={emailInputFocusHandler}
           />
-          <textarea
+          <ContactTextAreaStyled
             value={messageInputValue}
             name="message"
+            inputIsValid={messageInputIsValid}
             id=""
             cols="30"
             rows="10"
-            placeholder="Your Message"
+            placeholder={
+              messageInputIsValid
+                ? "Your Message"
+                : "Please be kind and send me a message"
+            }
             onChange={messageInputChangeHandler}
             onFocus={messageInputFocusHandler}
-          ></textarea>
+            onBlur={messageInputBlurHandler}
+          ></ContactTextAreaStyled>
           {formAlert && <BackDrop />}
           <FormMessageStyled active={formAlert}>
             <SubmitInfoParagraphStyled>

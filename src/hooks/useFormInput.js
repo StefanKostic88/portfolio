@@ -1,25 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useFormInput = (callback, emailValue = false) => {
   const [inputValue, setInputValue] = useState("");
   const [inputIsValid, setInputIsValid] = useState(true);
   const [inputIsTouched, setInputIsTouched] = useState(false);
 
-  console.log(callback(inputValue));
+  // console.log(callback(inputValue));
+  // console.log(emailValue);
 
   const inputChangeHandler = (e) => {
-    setInputValue(e.target.value);
-    console.log(e.target.value);
+    // let val = e.target.value;
     // e.target.value.trim() === "" && inputIsTouched
     // e.target.value === "" ||
     // (!e.target.value.includes("@") && emailInputIsTouched)
-    if (e.target.value.trim() === "" && inputIsTouched) {
-      setInputIsValid(false);
-      return;
+    // console.log(val);
+
+    if (emailValue) {
+      console.log("email");
+      setInputValue(e.target.value);
+      if (
+        e.target.value === "" ||
+        (!e.target.value.includes("@") && inputIsTouched)
+      ) {
+        setInputIsValid(false);
+        return;
+      } else {
+        setInputIsValid(true);
+      }
     } else {
-      setInputIsValid(true);
+      console.log("Not Email");
+      setInputValue(e.target.value);
+      if (e.target.value.trim() === "" && inputIsTouched) {
+        setInputIsValid(false);
+        return;
+      } else {
+        setInputIsValid(true);
+      }
     }
   };
+  // const inputChangeHandler = (e) => {
+  //   setInputValue(e.target.value);
+  //   console.log(e.target.value);
+  //   // e.target.value.trim() === "" && inputIsTouched
+  //   // e.target.value === "" ||
+  //   // (!e.target.value.includes("@") && emailInputIsTouched)
+  //   if (e.target.value.trim() === "" && inputIsTouched) {
+  //     setInputIsValid(false);
+  //     return;
+  //   } else {
+  //     setInputIsValid(true);
+  //   }
+  // };
 
   const inputFocusHandler = () => {
     setInputIsTouched(true);
@@ -37,6 +68,10 @@ const useFormInput = (callback, emailValue = false) => {
     setInputIsTouched(false);
   };
 
+  let inputTouchedAndValid =
+    inputIsTouched && inputIsValid && inputValue.trim() !== "";
+  // console.log(inputTouchedAndValid);
+
   return {
     inputValue,
     inputIsValid,
@@ -45,6 +80,7 @@ const useFormInput = (callback, emailValue = false) => {
     inputFocusHandler,
     inputBlurHandler,
     resetInputState,
+    inputTouchedAndValid,
   };
 };
 

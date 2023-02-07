@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import styled from "styled-components";
 
-import intersectionObj from "../../../store/intersecting-context";
+import BackDrop from "../../modal/BackDrop";
 
 const SectionStyled = styled.div`
   position: relative;
@@ -21,7 +21,7 @@ const SectionStyled = styled.div`
 
 const FormSectionStyled = styled.div`
   display: flex;
-
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -40,6 +40,19 @@ const FormSectionStyled = styled.div`
   }
   @media ${({ theme }) => theme.breakpoints.xsm} {
     min-width: 90%;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1.5%;
+    left: -1.5%;
+    color: white;
+    width: 103%;
+    height: 103%;
+    border: ${({ theme }) => theme.border};
+    border-radius: ${({ theme }) => theme.borderRadius};
+    box-shadow: ${({ theme }) => theme.boxShadow};
+    z-index: -1;
   }
 `;
 
@@ -165,6 +178,55 @@ const ContactUlStyled = styled.ul`
   }
 `;
 
+const FormMessageStyled = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: black;
+  // width: 120%;
+  // height: 120%;
+  max-width: 42rem;
+  min-height: 62rem;
+  transform: translate(-50%, -50%);
+  border: ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  display: flex;
+  justify-content: center;
+  opacity: ${(props) => (props.active ? "1" : "0")};
+  transition: all 700ms;
+  z-index: ${(props) => (props.active ? "15" : "-1")};
+
+  &::before {
+    position: absolute;
+    content: "";
+    left: 7.5%;
+    bottom: 15%;
+    width: 85%;
+    height: 2px;
+    background-color: ${({ theme }) => theme.color.secundary};
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    left: 15%;
+    bottom: 10%;
+    width: 70%;
+    height: 2px;
+    background-color: ${({ theme }) => theme.color.secundary};
+  }
+`;
+
+const SubmitInfoParagraphStyled = styled.p`
+  font-family: Orbitron, sans-serif;
+  letter-spacing: 1px;
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 2.6rem;
+  width: 75%;
+  text-align: center;
+  margin-top: 18rem;
+`;
+
 // console.log(ContactFormStyled); dodaj error prop
 
 const ContactSection = React.forwardRef((props, ref) => {
@@ -181,6 +243,8 @@ const ContactSection = React.forwardRef((props, ref) => {
   const [messageInputIsTouched, setMessageInputIsTouched] = useState(false);
 
   const [formIsNotValid, setFormIsNotValid] = useState(true);
+
+  const [formAlert, setFormAlert] = useState(false);
 
   // let nameInputIsValid = false;
 
@@ -211,13 +275,11 @@ const ContactSection = React.forwardRef((props, ref) => {
 
   const emailInputChangeHandler = (e) => {
     e.preventDefault();
-    // setEmailInputValue(e.target.value);
-    // console.log(!e.target.value.includes("@"));
+    setEmailInputValue(e.target.value);
     if (e.target.value === "" || !e.target.value.includes("@")) {
       setEmailInputIsValid(false);
       return;
     } else {
-      setEmailInputValue(e.target.value);
       setEmailInputIsValid(true);
     }
   };
@@ -233,8 +295,6 @@ const ContactSection = React.forwardRef((props, ref) => {
       return;
     }
   };
-
-  // console.log(emailInputTouchedAndValid);
 
   ////
   const messageInputChangeHandler = (e) => {
@@ -256,6 +316,34 @@ const ContactSection = React.forwardRef((props, ref) => {
   let messageInputTouchedAndValid =
     messageInputIsValid && messageInputIsTouched;
 
+  const resetNameInputState = () => {
+    setNameInputValue("");
+    setNameInputIsValid(false);
+    setNameInputIsTouched(false);
+  };
+  const resetEmailInputState = () => {
+    setEmailInputValue("");
+    setEmailInputIsValid(false);
+    SetEmailInputIsTouched(false);
+  };
+  const reserMessageInputState = () => {
+    setMessageInputValue("");
+    setMessageInputIsValid(false);
+    setMessageInputIsTouched(false);
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    if (!formIsNotValid) {
+      console.log(nameInputValue, emailInputValue, messageInputValue);
+      resetNameInputState();
+      resetEmailInputState();
+      reserMessageInputState();
+      setFormAlert(true);
+      // setFormIsNotValid(true);
+    }
+  };
+
   useEffect(() => {
     if (
       nameInputTouchedAndValid &&
@@ -266,19 +354,19 @@ const ContactSection = React.forwardRef((props, ref) => {
     } else {
       setFormIsNotValid(true);
     }
+
+    if (formAlert) {
+      setFormIsNotValid(true);
+      setTimeout(() => {
+        setFormAlert(false);
+      }, 3000);
+    }
   }, [
     nameInputTouchedAndValid,
     emailInputTouchedAndValid,
     messageInputTouchedAndValid,
   ]);
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    if (!formIsNotValid) {
-      console.log(nameInputValue, emailInputValue, messageInputValue);
-    }
-  };
-  // console.log(ref);
   return (
     <SectionStyled id="contact" ref={ref}>
       <div>
@@ -292,6 +380,7 @@ const ContactSection = React.forwardRef((props, ref) => {
       <FormSectionStyled>
         <ContactFormStyled action="" onSubmit={formSubmitHandler}>
           <input
+            value={nameInputValue}
             type="text"
             placeholder="Name"
             onChange={nameInputChangeHandler}
@@ -299,6 +388,7 @@ const ContactSection = React.forwardRef((props, ref) => {
             onFocus={nameInputFocusHandler}
           />
           <input
+            value={emailInputValue}
             type="email"
             placeholder="Email"
             onChange={emailInputChangeHandler}
@@ -306,6 +396,7 @@ const ContactSection = React.forwardRef((props, ref) => {
             onFocus={emailInputFocusHandler}
           />
           <textarea
+            value={messageInputValue}
             name="message"
             id=""
             cols="30"
@@ -314,19 +405,45 @@ const ContactSection = React.forwardRef((props, ref) => {
             onChange={messageInputChangeHandler}
             onFocus={messageInputFocusHandler}
           ></textarea>
+          {formAlert && <BackDrop />}
+          <FormMessageStyled active={formAlert}>
+            <SubmitInfoParagraphStyled>
+              Thank you for contacting me. I will reply to you as soon as
+              possible.
+            </SubmitInfoParagraphStyled>
+          </FormMessageStyled>
+
           <ContactButtonStyled type="submit" disabled={formIsNotValid}>
             Submit
           </ContactButtonStyled>
         </ContactFormStyled>
         <ContactUlStyled>
           <li>
-            <a href="#home">Github</a>
+            <a
+              href="https://github.com/StefanKostic88"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Github
+            </a>
           </li>
           <li>
-            <a href="#home">Linkedin</a>
+            <a
+              href="https://www.linkedin.com/in/stefan-kostic-8866a625"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Linkedin
+            </a>
           </li>
           <li>
-            <a href="#home">Instagram</a>
+            <a
+              href="https://www.instagram.com/cupri885"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Instagram
+            </a>
           </li>
         </ContactUlStyled>
       </FormSectionStyled>

@@ -15,7 +15,7 @@ export const SectionProjectStyled = styled.div`
   div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 3.5rem;
     @media ${({ theme }) => theme.breakpoints.lg} {
       gap: 2rem;
       };
@@ -36,8 +36,9 @@ export const SectionProjectStyled = styled.div`
 `;
 
 export const ProjectCardStyled = styled.figure`
-  border-radius: 10px;
-  overflow: hidden;
+position: relative;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  // overflow: hidden;
   box-shadow: ${({ theme }) => theme.boxShadow};
   border: ${({ theme }) => theme.border};
   width: 33rem;
@@ -69,6 +70,18 @@ export const ProjectCardStyled = styled.figure`
 &:hover {
  transform: scale(1.02);
  box-shadow: ${({ theme }) => theme.boxShadowhover};
+}
+&::before {
+  content: '';
+  position: absolute;
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  border: ${({ theme }) => theme.border};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  top: -1.5%;
+  left: -1.25%;
+  width: 102.5%;
+  height: 103%;
+  z-index: -1;
 }
 
   header {

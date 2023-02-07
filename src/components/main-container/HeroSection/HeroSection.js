@@ -8,6 +8,7 @@ import {
   IconsListStyled,
   LinksStyled,
   IconsStyled,
+  AboutIconStyled,
   HeadingLinesStyled,
   AnimatedBackgroundStyled,
 } from "../../styles/HeroStyles/HeroStyles";
@@ -17,13 +18,16 @@ import AnimatedHeroBacground from "../../../assets/imgs/4NB4.gif";
 
 const infoArr = [
   { infoName: "Download cv", infoHref: "#about" },
-  { infoName: "My work", infoHref: "#projects" },
+  { infoName: "My work", infoHref: "projects" },
 ];
 
 const iconsArr = [
-  { iconName: ImGithub, href: "#github" },
-  { iconName: ImInstagram, href: "#insta" },
-  { iconName: ImLinkedin, href: "#linkedin" },
+  { iconName: ImGithub, href: "https://github.com/StefanKostic88" },
+  { iconName: ImInstagram, href: "https://www.instagram.com/cupri885" },
+  {
+    iconName: ImLinkedin,
+    href: "https://www.linkedin.com/in/stefan-kostic-8866a625",
+  },
 ];
 
 const HeroSection = React.forwardRef((props, ref) => {
@@ -55,7 +59,7 @@ const HeroSection = React.forwardRef((props, ref) => {
         end developer
       </HeadingTerciaryStyled>
       {infoArr.map((el, index) => (
-        <LinksStyled key={index} href={el.infoHref}>
+        <LinksStyled key={index} to={el.infoHref} smooth duration={300}>
           {el.infoName}
           <span></span>
           <span></span>
@@ -66,15 +70,15 @@ const HeroSection = React.forwardRef((props, ref) => {
       <IconsListStyled>
         {iconsArr.map((el, index) => (
           <li key={index}>
-            <IconsStyled href={el.href}>
+            <IconsStyled href={el.href} target="_blank">
               <el.iconName />
             </IconsStyled>
           </li>
         ))}
       </IconsListStyled>
-      <IconsStyled href="#about">
+      <AboutIconStyled to="about" smooth duration={300}>
         <ImArrowDown />
-      </IconsStyled>
+      </AboutIconStyled>
       <AnimatedBackgroundStyled>
         <img src={AnimatedHeroBacground} alt="Hero Section" />
       </AnimatedBackgroundStyled>

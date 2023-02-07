@@ -13,7 +13,6 @@ export const NavStyled = styled.nav`
 `;
 
 export const NavCenterStyled = styled.div`
-  // background-color: black;
   width: 100%;
   max-width: 130rem;
   display: flex;

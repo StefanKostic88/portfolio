@@ -1,3 +1,4 @@
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
 export const SectionHeroStyled = styled.div`
@@ -130,7 +131,8 @@ export const IconsListStyled = styled.ul`
 `;
 
 // HeroILinksStyled
-export const LinksStyled = styled.a`
+export const LinksStyled = styled(Link)`
+  cursor: pointer;
   margin-top: 2rem;
   padding: 0.8rem 1.6rem;
   font-size: 2.4rem;
@@ -275,6 +277,33 @@ export const IconsStyled = styled.a`
   align-items: center;
   justify-content: center;
   transition: transform 200ms linear;
+  cursor: pointer;
+
+  padding: 3px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border: ${({ theme }) => theme.border};
+
+  svg {
+    width: 2.75rem;
+    height: 2.75rem;
+    fill: ${({ theme }) => theme.color.primary};
+  }
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 3px ${({ theme }) => theme.color.primary};
+    outline: none;
+  }
+`;
+
+export const AboutIconStyled = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms linear;
+  cursor: pointer;
 
   padding: 3px;
   width: 4rem;

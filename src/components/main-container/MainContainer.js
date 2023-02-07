@@ -1,17 +1,12 @@
 import { useEffect, useRef, useContext } from "react";
-import styled from "styled-components";
+
 import HeroSection from "./HeroSection/HeroSection";
 import AboutSection from "./AboutSection/AboutSection";
 import ProjectsSection from "./ProjectsSection/ProjectsSection";
 import ContactSection from "./ContactSection/ContactSection";
 import IntersectionObj from "../../store/intersecting-context";
 
-const WraperStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import { WraperStyled } from "../styles/WraperStyles/WraperStyles";
 
 const MainContainer = () => {
   const heroRef = useRef();

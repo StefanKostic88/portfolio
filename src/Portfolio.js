@@ -102,7 +102,7 @@ const Portfolio = () => {
     projectsArr: projects,
     info: modalInfo,
   };
-
+  // probaj context da stavis u jedno
   return (
     <ThemeProvider theme={theme}>
       <>

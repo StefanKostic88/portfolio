@@ -18,7 +18,6 @@ const Portfolio = () => {
     contact: false,
     project: false,
     about: false,
-    heroIsVisible: true,
   };
 
   const intersectionReducer = (state, action) => {
@@ -44,14 +43,6 @@ const Portfolio = () => {
         project: false,
         about: true,
         heroIsVisible: false,
-      };
-    }
-    if (action.type === "hero") {
-      return {
-        contact: false,
-        project: false,
-        about: false,
-        heroIsVisible: true,
       };
     }
 
@@ -112,14 +103,11 @@ const Portfolio = () => {
     info: modalInfo,
   };
 
-  const generateContactIntersecting = (conSection) => {};
-
   return (
     <ThemeProvider theme={theme}>
       <>
         <IntersectionObj.Provider
           value={{
-            contactIsInterSecting: generateContactIntersecting,
             intersectionObj: intersectionState,
             getElement: refIntersection,
           }}

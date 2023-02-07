@@ -1,3 +1,4 @@
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
 export const NavStyled = styled.nav`
@@ -56,6 +57,86 @@ export const UlStyled = styled.ul`
   }
 `;
 
+export const NavListStyled = styled.li`
+  padding: 1rem 1.6rem;
+  position: relative;
+  span:nth-child(1) {
+    position: absolute;
+    top: -1px;
+    right: 5%;
+    height: 1px;
+    width: 90%;
+    transition: transform 200ms linear;
+    background-color: ${({ theme }) => theme.color.primary};
+    transform: ${(props) => (props.active ? "scaleX(1)" : "scaleX(0)")};
+    ${(props) => (props.active ? "right" : "left)")};
+    box-shadow: ${({ theme }) => theme.boxShadowLinks};
+  }
+  span:nth-child(2) {
+    position: absolute;
+    top: 10%;
+    right: -1px;
+    height: 80%;
+    width: 2px;
+
+    transform-origin: ${(props) => (props.active ? "center bottom;" : "right")};
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadowLinks};
+    transform: ${(props) => (props.active ? "scaleY(1)" : "scaleY(0)")};
+  }
+
+  span:nth-child(3) {
+    position: absolute;
+    left: 5%;
+    bottom: -1px;
+    height: 2px;
+    width: 90%;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadowLinks};
+    transform: ${(props) => (props.active ? "scaleX(1)" : "scaleX(0)")};
+    transform-origin: ${(props) => (props.active ? "left" : "right")};
+  }
+
+  span:nth-child(4) {
+    position: absolute;
+    left: -1px;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    background-color: ${({ theme }) => theme.color.primary};
+    transition: transform 200ms linear;
+    box-shadow: ${({ theme }) => theme.boxShadowLinks};
+    transform: ${(props) => (props.active ? "scaleY(1)" : "scaleY(0)")};
+    transform-origin: ${(props) => (props.active ? "bottom" : "top")};
+    transition: transform 200ms linear;
+  }
+`;
+
+export const SmothScrollLInkStyled = styled(Link)`
+  color: ${({ theme }) => theme.textColor.dark};
+  color: white;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 2px;
+  cursor: pointer;
+  &:link,
+  &:active {
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.textLight};
+  }
+  &:hover,
+  &:focus {
+    text-shadow: ${({ theme }) => theme.textShadow};
+    color: ${({ theme }) => theme.textLight};
+    outline: none;
+  }
+`;
+
 export const HamburgerStyled = styled.div`
   width: 3.8rem;
   height: 3.8rem;
@@ -97,14 +178,12 @@ export const BarStyled = styled.div`
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
   transition: all 300ms ease-in-out;
-
   &::before,
   &::after {
     content: "";
     position: absolute;
     height: 3px;
     width: 85%;
-
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
     transition: all 500ms ease-in-out;
@@ -121,138 +200,3 @@ export const BarStyled = styled.div`
       props.active ? "translate(0, 0) rotate(-45deg);" : "translateY(10px);"};
   }
 `;
-
-// span:nth-child(1) {
-//   position: absolute;
-//   top: -1px;
-//   right: 0;
-//   height: 2px;
-//   width: 100%;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transform: scaleX(0);
-//   transform-origin: left;
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-// }
-
-// &:hover span:nth-child(1),
-// &:focus span:nth-child(1) {
-//   top: -1px;
-//   right: 0;
-//   height: 2px;
-//   width: 100%;
-//   transform: scaleX(1);
-//   transform-origin: right;
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-// }
-
-// span:nth-child(2) {
-//   position: absolute;
-//   top: 0;
-//   right: -1px;
-//   height: 100%;
-//   width: 2px;
-//   transform-origin: right;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleY(0);
-//   // transform-origin: top center;
-//   transform-origin: center bottom;
-//   transition: transform 200ms linear;
-// }
-// &:hover span:nth-child(2),
-// &:focus span:nth-child(2) {
-//   position: absolute;
-//   top: 0;
-//   right: -1px;
-//   height: 100%;
-//   width: 2px;
-//   transform-origin: right;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleY(1);
-//   // transform-origin: center bottom;
-//   transform-origin: top center;
-// }
-// span:nth-child(3) {
-//   position: absolute;
-//   left: 0;
-//   bottom: -1px;
-//   height: 2px;
-//   width: 100%;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleX(0);
-//   transform-origin: right;
-//   transition: transform 200ms linear;
-// }
-// &:hover span:nth-child(3),
-// &:focus span:nth-child(3) {
-//   position: absolute;
-//   left: 0;
-//   bottom: -1px;
-//   height: 2px;
-//   width: 100%;
-
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleX(1);
-//   transform-origin: left;
-//   transition: transform 200ms linear;
-// }
-// span:nth-child(4) {
-//   position: absolute;
-//   left: -1px;
-//   top: 0;
-//   height: 100%;
-//   width: 2px;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleY(0);
-//   transform-origin: top;
-//   transition: transform 200ms linear;
-// }
-// &:hover span:nth-child(4),
-// &:focus span:nth-child(4) {
-//   position: absolute;
-//   left: -1px;
-//   top: 0;
-//   height: 100%;
-//   width: 2px;
-//   background-color: ${({ theme }) => theme.color.primary};
-//   transition: transform 200ms linear;
-//   box-shadow: ${({ theme }) => theme.boxShadow};
-//   transform: scaleY(1);
-//   transform-origin: bottom;
-//   transition: transform 200ms linear;
-// }
-
-// li {
-//   padding: 1rem 1.6rem;
-//   position: relative;
-//   a {
-//     color: ${({ theme }) => theme.textColor.dark};
-//     font-weight: 500;
-//     text-decoration: none;
-//     letter-spacing: 2px;
-//     cursor: pointer;
-//     &:link,
-//     &:active {
-//       font-size: 2.4rem;
-//       text-transform: uppercase;
-//       color: ${({ theme }) => theme.textLight};
-//     }
-//     &:hover,
-//     &:focus {
-//       text-shadow: ${({ theme }) => theme.textShadow};
-//       color: ${({ theme }) => theme.textLight};
-//       outline: none;
-//     }
-//   }
-// }

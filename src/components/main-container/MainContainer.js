@@ -26,7 +26,7 @@ const MainContainer = () => {
     intersectionContext.getElement(aboutRef.current, 1);
     intersectionContext.getElement(projectsRef.current, 1);
     intersectionContext.getElement(contactRef.current, 1);
-  }, [intersectionContext]);
+  }, []);
 
   return (
     <WraperStyled>

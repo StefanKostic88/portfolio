@@ -28,14 +28,24 @@ export const FormSectionStyled = styled.div`
   border: ${({ theme }) => theme.border};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: ${({ theme }) => theme.boxShadow};
+
   @media ${({ theme }) => theme.breakpoints.md} {
-    min-width: 70%;
+    min-width: 60%;
+    // width: 80%;
+    // width: 200rem;
+    margin-bottom: 5rem;
   }
   @media ${({ theme }) => theme.breakpoints.sm} {
     min-width: 80%;
   }
   @media ${({ theme }) => theme.breakpoints.xsm} {
-    min-width: 90%;
+    // min-width: 70%;
+    width: 85%;
+    padding: 0.8rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    width: 88%;
+    padding: 0.2rem;
   }
   &::before {
     content: "";
@@ -59,10 +69,26 @@ export const ContactHeadingPrimaryStyled = styled.h2`
   color: ${({ theme }) => theme.textColor.dark};
   text-shadow: ${({ theme }) => theme.boxShadow};
   font-weight: 400;
-  // font-size: 2.8rem;
+
   font-size: 3.2rem;
   text-align: center;
   margin-bottom: 3.5rem;
+
+  @media (max-width: 925px) {
+    margin-top: 12rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.lg} {
+    font-size: 3rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    font-size: 2.8rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    font-size: 2.6rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 2.4rem;
+  }
 `;
 export const ContactHeadingSecundaryStyled = styled.h6`
   font-family: Orbitron, sans-serif;
@@ -73,6 +99,19 @@ export const ContactHeadingSecundaryStyled = styled.h6`
   font-size: 2.2rem;
   // margin-bottom: 2.5rem;
   margin-bottom: 5rem;
+
+  @media ${({ theme }) => theme.breakpoints.lg} {
+    font-size: 2.1rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    font-size: 2rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    font-size: 1.8rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.6rem;
+  }
 `;
 
 export const ContactUlStyled = styled.ul`
@@ -81,6 +120,10 @@ export const ContactUlStyled = styled.ul`
   justify-content: space-around;
   margin-top: 4rem;
   gap: 2rem;
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    justify-content: center;
+    gap: 1.5rem;
+  }
   a {
     font-family: Orbitron, sans-serif;
     letter-spacing: 2px;
@@ -91,6 +134,12 @@ export const ContactUlStyled = styled.ul`
     &:focus {
       outline: none;
       text-shadow: ${({ theme }) => theme.textShadow};
+    }
+    @media ${({ theme }) => theme.breakpoints.xsm} {
+      font-size: 1.5rem;
+    }
+    @media ${({ theme }) => theme.breakpoints.mobile} {
+      font-size: 1.4rem;
     }
   }
 `;
@@ -135,6 +184,9 @@ export const ContactButtonStyled = styled.button`
       box-shadow: 0 0 0 1px #762020;
     }
   }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.5rem;
+  }
 `;
 
 export const FormMessageStyled = styled.div`
@@ -174,6 +226,19 @@ export const FormMessageStyled = styled.div`
     height: 2px;
     background-color: ${({ theme }) => theme.color.secundary};
   }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    width: 41rem;
+  }
+  // @media ${({ theme }) => theme.breakpoints.sm} {
+  //   width: 42rem;
+  // }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    width: 90%;
+  }
+  // @media ${({ theme }) => theme.breakpoints.mobile} {
+  //   font-size: 1.6rem;
+  // }
 `;
 
 export const SubmitInfoParagraphStyled = styled.p`
@@ -184,6 +249,12 @@ export const SubmitInfoParagraphStyled = styled.p`
   width: 75%;
   text-align: center;
   margin-top: 18rem;
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    font-size: 2.4rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 export const ContactInputStyled = styled.input`
@@ -215,6 +286,9 @@ export const ContactInputStyled = styled.input`
       rgb(72 219 251) 0px 0px 15px`
         : "0 0 0 1px #762020"};
     outline: none;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.4rem;
   }
 `;
 

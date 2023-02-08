@@ -38,6 +38,13 @@ export const UlStyled = styled.ul`
   display: flex;
   gap: 1rem;
 
+  @media ${({ theme }) => theme.breakpoints.lg} {
+    gap: 0.75rem;
+  }
+  // @media ${({ theme }) => theme.breakpoints.md} {
+  //   font-size: 2rem;
+  // }
+
   @media ${({ theme }) => {
       return theme.breakpoints.md;
     }} {
@@ -58,6 +65,10 @@ export const UlStyled = styled.ul`
 
 export const NavListStyled = styled.li`
   padding: 1rem 1.6rem;
+  @media ${({ theme }) => theme.breakpoints.lg} {
+    padding: 1rem 1.5rem;
+  }
+
   position: relative;
   span:nth-child(1) {
     position: absolute;
@@ -114,17 +125,22 @@ export const NavListStyled = styled.li`
 `;
 
 export const SmothScrollLInkStyled = styled(Link)`
-  color: ${({ theme }) => theme.textColor.dark};
-  color: white;
+  color: ${({ theme }) => theme.textColor.light};
   font-size: 2.4rem;
   text-transform: uppercase;
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 2px;
   cursor: pointer;
+  @media ${({ theme }) => theme.breakpoints.lg} {
+    font-size: 2.2rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.md} {
+    font-size: 2rem;
+  }
   &:link,
   &:active {
-    font-size: 2.4rem;
+    // font-size: 2.4rem;
     text-transform: uppercase;
     color: ${({ theme }) => theme.textLight};
   }
@@ -158,15 +174,16 @@ export const HamburgerStyled = styled.div`
 
   transition: all 600ms ease-in-out;
   display: none;
-  @media ${({ theme }) => {
-    return theme.breakpoints.md;
-  }} {
+  @media ${({ theme }) => theme.breakpoints.md} {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    right: 1rem;
+    right: 2rem;
     z-index: 1;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    right: 1rem;
   }
 `;
 

@@ -84,12 +84,11 @@ export const ParagraphStyled = styled.p`
   color: ${({ theme }) => theme.textColor.light};
   &:last-child {
     margin-bottom: 5rem;
-    // margin-bottom: 0;
   }
-
-  @media ${({ theme }) => theme.breakpoints.md} {
+  @media ${({ theme }) => theme.breakpoints.lg} {
     font-size: 2rem;
   }
+
   @media ${({ theme }) => theme.breakpoints.sm} {
     font-size: 1.9rem;
   }

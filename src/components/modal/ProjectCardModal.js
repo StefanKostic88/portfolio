@@ -20,6 +20,9 @@ const ProjectCardDetialsStyled = styled.article`
   justify-content: space-between;
   box-shadow: ${({ theme }) => theme.boxShadow};
   z-index: 15;
+  @media ${({ theme }) => theme.breakpoints.md} {
+    width: 95%;
+  } ;
 `;
 
 const ProjectCardTitleStyled = styled.h4`
@@ -30,6 +33,12 @@ const ProjectCardTitleStyled = styled.h4`
   font-size: 2.6rem;
   margin-top: 5.4rem;
   margin-bottom: 3.2rem;
+  @media ${({ theme }) => theme.breakpoints.md} {
+    font-size: 2.4rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 2.2rem;
+  } ;
 `;
 
 const ProjectParagraphStyled = styled.p`
@@ -39,6 +48,12 @@ const ProjectParagraphStyled = styled.p`
   font-weight: 300;
   margin-bottom: 3.2rem;
   font-family: Montserrat, sans-serif;
+  @media ${({ theme }) => theme.breakpoints.md} {
+    font-size: 1.7rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.6rem;
+  } ;
 `;
 
 const ProjectHeaderStyled = styled.header`
@@ -78,6 +93,12 @@ const VersionsCardPartStyled = styled.ul`
     // padding: 0.8rem 1rem;
     // cursor: pointer;
   }
+  @media ${({ theme }) => theme.breakpoints.md} {
+    gap: 1.25rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    gap: 0.75rem;
+  } ;
 `;
 
 const ModalLinkStyled = styled.a`
@@ -88,6 +109,16 @@ const ModalLinkStyled = styled.a`
   font-size: 1.6rem;
   padding: 0.8rem 1rem;
   cursor: pointer;
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    font-size: 1.4rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.xsm} {
+    font-size: 1.3rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.2rem;
+  }
 
   position: relative;
 

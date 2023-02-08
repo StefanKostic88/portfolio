@@ -17,21 +17,22 @@ export const SectionProjectStyled = styled.div`
     grid-template-columns: repeat(3, 1fr);
     gap: 3.5rem;
     @media ${({ theme }) => theme.breakpoints.lg} {
-      gap: 2rem;
+      gap: 3rem;
       };
     @media(max-width: 925px){
-      padding-top: 6rem;
+      padding-top: 12rem;
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+    //  margin-top: 6rem;
      };
     @media ${({ theme }) => theme.breakpoints.md} {
-      gap: 2rem;
+      gap: 2.5rem;
     };
-    @media(max-width: 620px){
+    @media(max-width: 650px){
       grid-template-columns: 1fr;
     };
     @media ${({ theme }) => theme.breakpoints.xsm} {
     justify-items: center;
+    row-gap: 2.5rem;
     };
 `;
 
@@ -58,12 +59,12 @@ position: relative;
     width: 29rem;
   height: 27rem;
   };
-  @media(max-width: 620px){
-    width: 42rem;
+  @media(max-width: 650px){
+    width: 41rem;
     height: 30rem;
    };
    @media ${({ theme }) => theme.breakpoints.xsm} {
-    width: 90%;
+    width: 85%;
     height: 27rem;
     };
 &:hover {

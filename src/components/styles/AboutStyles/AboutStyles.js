@@ -33,6 +33,9 @@ export const SectionAboutStyled = styled.div`
     background-color: ${({ theme }) => theme.color.primary};
     border-radius: 3px;
   }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    padding: 0 2rem;
+  }
 `;
 
 export const AboutHeading = styled.h3`
@@ -47,6 +50,9 @@ export const AboutHeading = styled.h3`
   @media${({ theme }) => theme.breakpoints.xsm} {
     font-size: 2.6rem;
     text-align: center;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 2.4rem;
   }
 
   &:before {
@@ -91,6 +97,9 @@ export const ParagraphStyled = styled.p`
     font-size: 1.8rem;
     text-align: center;
   }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    font-size: 1.7rem;
+  }
 `;
 
 export const ListStyled = styled.ul`
@@ -117,6 +126,10 @@ export const ListStyled = styled.ul`
       height: 3rem;
       width: 3rem;
     }
+    @media ${({ theme }) => theme.breakpoints.mobile} {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
   }
 
   @media ${({ theme }) => theme.breakpoints.md} {
@@ -128,6 +141,9 @@ export const ListStyled = styled.ul`
   }
   @media ${({ theme }) => theme.breakpoints.xsm} {
     gap: 1rem;
+  }
+  @media ${({ theme }) => theme.breakpoints.mobile} {
+    gap: 0.5rem;
   }
 `;
 

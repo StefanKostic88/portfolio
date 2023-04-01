@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./Theme.js";
 
 import GlobalStyles from "./components/styles/Global.js";
-import Navbar from "./components/navbar/Navbar.js";
+import Navbar from "./components/Navbar/Navbar.js";
 import MainContainer from "./components/main-container/MainContainer.js";
 import ProjectCardModal from "./components/modal/ProjectCardModal.js";
 

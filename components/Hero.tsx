@@ -1,5 +1,6 @@
 import { Spotlight } from "./ui/SpotLight";
-
+import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import MagicButton from "./ui/MagicButton";
 const Hero = () => {
   return (
     <div className="pb-20 pt-36">
@@ -25,10 +26,21 @@ const Hero = () => {
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] items-center justify-center">
-          <h2 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
             Dynamic Web Magic With Next.js
-          </h2>
+          </p>
+          <TextGenerateEffect
+            className="text-center text-[40px] md:text-5xl lg:text-6xl"
+            words="Transforming Concepts into Seamless Experiences"
+          ></TextGenerateEffect>
+          <p className="text-center mb-4 text-sm md:text-lg lg:text-2xl">
+            Hi I&apos;m Stefan, a Fullstack Developer basedin Serbia
+          </p>
+
+          <a href="#about">
+            <MagicButton title="Show My Work" />
+          </a>
         </div>
       </div>
     </div>

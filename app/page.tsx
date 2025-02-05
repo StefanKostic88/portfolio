@@ -1,17 +1,7 @@
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
-import { JSX } from "react";
-import { FaHome } from "react-icons/fa";
-
-interface NavBarItem {
-  name: string;
-  link: string;
-  icon?: JSX.Element;
-}
-
-const navBarItems: NavBarItem[] = [
-  { name: "Home", link: "/", icon: <FaHome /> },
-];
+import Grid from "@/components/Grid";
+import { navBarItems } from "@/data";
 
 export default function Home() {
   return (
@@ -19,6 +9,7 @@ export default function Home() {
       <div className="max-w-7xl w-full">
         <FloatingNav navItems={navBarItems} />
         <Hero />
+        <Grid />
       </div>
     </main>
   );

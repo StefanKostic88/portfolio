@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { workExperience } from "@/data";
 import React from "react";
 import { Button } from "./ui/MovingBoarders";
@@ -10,7 +11,7 @@ const Experience = () => {
         <span className="text-purple"> work expirience</span>
       </h1>
       <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-        {workExperience.map(({ id, className, desc, title, thumbnail }) => (
+        {workExperience.map(({ id, desc, title, thumbnail }) => (
           <Button
             key={id}
             duration={Math.floor(Math.random() * 10000) + 10000}

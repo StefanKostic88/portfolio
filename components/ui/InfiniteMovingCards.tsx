@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { cn } from "@/utils/cn";
@@ -105,7 +106,11 @@ export const InfiniteMovingCards = ({
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <div className="me-3">
-                  <img src="/profile.svg" alt="profile" />
+                  <img
+                    src="/no-profile-picture-15257.svg"
+                    alt="profile"
+                    className="w-10"
+                  />
                 </div>
                 <span className="flex flex-col gap-1">
                   <span className="text-xl font-bold leading-[1.6] text-white">

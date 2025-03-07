@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
@@ -21,7 +22,11 @@ const Projects = () => {
                 <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]">
                   <img src="/bg.png" alt="bgimg" />
                 </div>
-                <img src={img} alt={title} className="z-10 absolute bottom-0" />
+                <img
+                  src={img}
+                  alt={title}
+                  className="z-10 absolute  scale-75"
+                />
               </div>
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
                 {title}

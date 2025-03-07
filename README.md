@@ -1,16 +1,22 @@
-name: My Portfolio
-description: >
+# My Portfolio
+
 This is my personal portfolio website built using Next.js, Motion, Tailwind CSS, TypeScript, and Aceternity UI.
 It showcases my skills, projects, and experiences in web development.
 
-features:
+## Table of Contents
 
-- Responsive & Modern UI with Aceternity UI
-- Smooth Animations using Framer Motion
-- Fast & Optimized with Next.js
-- Dark Mode Support
-- Projects Showcase with Live Demos
-- Contact Form Integration
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Contact](#contact)
+
+## Features
+
+- **Responsive & Modern UI with Aceternity UI**: Built using Aceternity UI components for a clean, sleek, and visually appealing design that works across all devices.
+- **Smooth Animations using Framer Motion**: Enhanced user experience with fluid transitions and interactive animations powered by Framer Motion.
+- **Projects Showcase with Live Demos**: Displays my projects with interactive previews, GitHub links, and live demos to explore the work in action.
+
+## Tech Stack
 
 tech_stack:
 framework: Next.js
@@ -19,23 +25,17 @@ animations: Motion
 ui_components: Aceternity UI
 language: TypeScript
 
+## Getting Started
+
 setup:
 clone_repo: "git clone https://github.com/your-username/your-portfolio.git && cd your-portfolio"
 install_dependencies:
 npm: "npm install"
-yarn: "yarn install"
 run_dev:
 npm: "npm run dev"
-yarn: "yarn dev"
 local_url: "http://localhost:3000"
 
-deployment:
-platforms: - Vercel - Netlify
-vercel_deploy: "vercel"
+## Contact
 
-contact:
-email: "your.email@example.com"
-twitter: "https://twitter.com/yourhandle"
-linkedin: "https://linkedin.com/in/yourprofile"
-
-made_with: "❤️ Passion and Creativity!"
+email: "stefankostic88@yahoo.com"
+linkedin: "https://www.linkedin.com/in/cupri"

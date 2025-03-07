@@ -31,7 +31,7 @@ export const gridItems: GridItemProp[] = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: " /about/test2.jpg",
     spareImg: "",
   },
   {
@@ -67,7 +67,7 @@ export const gridItems: GridItemProp[] = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
+    title: "Currently building a Express clone library",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -90,132 +90,184 @@ export const gridItems: GridItemProp[] = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    title: "E Learn App",
+    des: "E Learn App is an educational platform developed using Angular 17 with standalone components and RxJS. The primary objective of this application is to create a dynamic educational environment that enhances communication between students and trainers. The portal leverages AWS API Gateway for backend communication, ensuring smooth interaction with various services.",
+    img: "/projects/e-learn.png",
+    iconLists: [
+      "/ang.svg",
+      "/tail.svg",
+      "/ts.svg",
+      "/rxjs-1.svg",
+      "/nodejs-icon.svg",
+      "/aws-api-gateway.svg",
+      "/aws-lambda-1.svg",
+      "/aws-dynamodb-svgrepo-com.svg",
+    ],
+    link: "https://e-learn-stefan.netlify.app/",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    title: "The Fit Club",
+    des: "Fit Club is a modern fitness website built with React, TypeScript, and Framer Motion. It provides an interactive and engaging experience for users looking for fitness training and workout inspiration.",
+    img: "/projects/fit-club.png",
+    iconLists: ["/re.svg", "/ts.svg", "/fm.svg"],
+    link: "https://fit-club-stefan.netlify.app/",
   },
   {
     id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "/ui.aiimg.com",
+    title: "Questions App",
+    des: "Question App is a simple survey application built with React that allows users to create and participate in surveys. Designed for ease of use, the app enables users to answer questions, submit responses, and view results dynamically.",
+    img: "/projects/question-app.png",
+    iconLists: ["/re.svg", "/ts.svg"],
+    link: "https://question-app-stefan.netlify.app/",
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "/ui.apple.com",
+    title: "OmniFood",
+    des: "Omnifood is a simple yet visually appealing landing page built with HTML, CSS, and JavaScript. Designed to showcase a modern food delivery service, the page highlights key features, benefits, and a call-to-action for users to explore the service.",
+    img: "/projects/omnifood.png",
+    iconLists: [
+      "/html-5-logo-svgrepo-com.svg",
+      "/css-3-logo-svgrepo-com.svg",
+      "/scss-svgrepo-com.svg",
+      "/javascript-logo-svgrepo-com.svg",
+    ],
+    link: "https://omnifood-stefan.netlify.app",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Collaborating with Stefan was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project.",
+    name: "Aleksandar Militar",
+    title: "Sportsbook manager at Betagy llc",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson 1",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson 2",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson 3",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson 4",
-    title: "Director of AlphaStream Technologies",
+      "Stefan is an exceptional developer with a keen eye for detail and a deep understanding of modern web technologies. His ability to quickly learn and apply new concepts makes him a valuable asset to any team.",
+    name: "Kosta Dokosic",
+    title: "Senior Developer at Epam systmes",
   },
 ];
 
 export const companies = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-  },
+  { id: 1, name: "html", img: "/html-5-logo-svgrepo-com.svg" },
+  { id: 2, name: "css", img: "/css-3-logo-svgrepo-com.svg" },
   {
     id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
+    name: "javascript",
+    img: "/javascript-logo-svgrepo-com.svg",
+    // nameImg: "/hostName.svg",
   },
   {
     id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
+    name: "typescript",
+    img: "/ts.svg",
+    // nameImg: "/hostName.svg",
   },
   {
     id: 5,
-    name: "docker.",
-    img: "/dock.svg",
-    nameImg: "/dockerName.svg",
+    name: "angular",
+    img: "/ang.svg",
+    // nameImg: "/appName.svg",
   },
+  {
+    id: 6,
+    name: "react",
+    img: "/re.svg",
+    // nameImg: "/cloudName.svg",
+  },
+
+  { id: 7, name: "next.js", img: "/next.svg" },
+  { id: 8, name: "node.js", img: "/nodejs-icon.svg" },
+  { id: 9, name: "rxjs", img: "/rxjs-1.svg" },
+  { id: 10, name: "rxjs", img: "/tail.svg" },
+  { id: 11, name: "docker.", img: "/dock.svg" },
 ];
+
+// export const companies = [
+//   {
+//     id: 1,
+//     name: "cloudinary",
+//     img: "/cloud.svg",
+//     nameImg: "/cloudName.svg",
+//   },
+//   {
+//     id: 2,
+//     name: "appwrite",
+//     img: "/app.svg",
+//     nameImg: "/appName.svg",
+//   },
+//   {
+//     id: 3,
+//     name: "HOSTINGER",
+//     img: "/host.svg",
+//     nameImg: "/hostName.svg",
+//   },
+//   {
+//     id: 4,
+//     name: "stream",
+//     img: "/s.svg",
+//     nameImg: "/streamName.svg",
+//   },
+//   {
+//     id: 5,
+//     name: "docker.",
+//     img: "/dock.svg",
+//     nameImg: "/dockerName.svg",
+//   },
+//   {
+//     id: 6,
+//     name: "tailwind.",
+//     img: "/tail.svg",
+//     nameImg: "/tailwind.svg",
+//   },
+//   {
+//     id: 6,
+//     name: "tailwind.",
+//     img: "/tail.svg",
+//     nameImg: "/tailwind.svg",
+//   },
+//   {
+//     id: 6,
+//     name: "tailwind.",
+//     img: "/tail.svg",
+//     nameImg: "/tailwind.svg",
+//   },
+// ];
 
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "Frontend Engineer Intern - TrustDigital",
+    desc: "Assisted in the development of a web-based platform using Next.js TypeScript and Tailwind css, enhancing interactivity.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    title: "Frontend Web Developer -  NELKEN",
+    desc: "Developing web apps using  React, TypeScript and Matirial UI.",
     className: "md:col-span-2",
-    thumbnail: "/exp2.svg",
+    // thumbnail: "/exp2.svg",
+    thumbnail: "/exp4.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "Full Stack JavaScript Developer - Epam Systems",
+    desc: "Developing web apps using Angular, Node.js, Express, AWS, Serverless, TypeScript, PostgreSQL and MongoDB.",
     className: "md:col-span-2",
-    thumbnail: "/exp3.svg",
+    // thumbnail: "/exp3.svg",
+    thumbnail: "/exp2.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "Risk Supervisor - Betagy LLC",
+    desc: " Led a comprehensive review of sports betting risk supervision processes, identifying critical gaps and streamlining workflows to enhance efficiency over a period of 2 years.",
     className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    // thumbnail: "/exp4.svg",
+    thumbnail: "/exp3.svg",
   },
 ];
 
@@ -223,13 +275,15 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/StefanKostic88",
   },
   {
     id: 2,
-    img: "/twit.svg",
-  },
-  {
-    id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/cupri",
   },
+  // {
+  //   id: 3,
+  //   img: "/twit.svg",
+  // },
 ];

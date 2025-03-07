@@ -103,7 +103,7 @@ export const projects = [
       "/aws-lambda-1.svg",
       "/aws-dynamodb-svgrepo-com.svg",
     ],
-    link: "https://e-learn-stefan.netlify.app/",
+    link: "https://e-learn-stefan.netlify.app",
   },
   {
     id: 2,
@@ -111,7 +111,7 @@ export const projects = [
     des: "Fit Club is a modern fitness website built with React, TypeScript, and Framer Motion. It provides an interactive and engaging experience for users looking for fitness training and workout inspiration.",
     img: "/projects/fit-club.png",
     iconLists: ["/re.svg", "/ts.svg", "/fm.svg"],
-    link: "https://fit-club-stefan.netlify.app/",
+    link: "https://fit-club-stefan.netlify.app",
   },
   {
     id: 3,
@@ -119,7 +119,7 @@ export const projects = [
     des: "Question App is a simple survey application built with React that allows users to create and participate in surveys. Designed for ease of use, the app enables users to answer questions, submit responses, and view results dynamically.",
     img: "/projects/question-app.png",
     iconLists: ["/re.svg", "/ts.svg"],
-    link: "https://question-app-stefan.netlify.app/",
+    link: "https://question-app-stefan.netlify.app",
   },
   {
     id: 4,
@@ -264,7 +264,7 @@ export const workExperience = [
   {
     id: 4,
     title: "Risk Supervisor - Betagy LLC",
-    desc: " Led a comprehensive review of sports betting risk supervision processes, identifying critical gaps and streamlining workflows to enhance efficiency over a period of 2 years.",
+    desc: " Led a comprehensive review of sports betting risk supervision processes, identifying critical gaps and streamlining workflows to enhance efficiency.",
     className: "md:col-span-2",
     // thumbnail: "/exp4.svg",
     thumbnail: "/exp3.svg",

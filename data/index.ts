@@ -146,7 +146,7 @@ export const testimonials = [
   {
     quote:
       "Stefan is an exceptional developer with a keen eye for detail and a deep understanding of modern web technologies. His ability to quickly learn and apply new concepts makes him a valuable asset to any team.",
-    name: "Kosta Dokosic",
+    name: "Aleksandar Glisic",
     title: "Senior Developer at Epam systmes",
   },
 ];

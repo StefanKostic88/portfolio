@@ -5,10 +5,15 @@ It showcases my skills, projects, and experiences in web development.
 
 ## Table of Contents
 
+- [Live Version](#live-version)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Contact](#contact)
+
+## Live Version
+
+https://stefan-kostic-portfolio.netlify.app
 
 ## Features
 

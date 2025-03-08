@@ -30,12 +30,12 @@ const Projects = () => {
               <p className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2">
                 {des}
               </p>
-              <div className="flex items-center justify-between mt-7 mb-3">
-                <div className="flex items-center">
+              <div className="flex items-center justify-between mt-7 mb-3 flex-col gap-5 sm:flex-row sm:gap-0">
+                <div className="flex items-center flex-wrap justify-center">
                   {iconLists.map((icon, index) => (
                     <div
                       key={icon}
-                      className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 sm:w-8 sm:h-8 flex justify-center items-center"
+                      className="border border-white/[0.2] rounded-full bg-black w-8 h-8 md:w-10 md:h-10 flex justify-center items-center relative"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
